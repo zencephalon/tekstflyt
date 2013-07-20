@@ -5,7 +5,7 @@ body {
     font-size: 1.4em;
     margin-right: 30px;
     background-color: #ffffff;
-    width: 30em;
+    width: 26em;
     height: 14em;
 }
 .tekstflyt {
@@ -15,7 +15,8 @@ body {
     margin-right: 1em;
 }
 .stats {
-    float: right;
+    float: left;
+    padding-right: 1em;
 }
 #buffers {
     text-align: right;

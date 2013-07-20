@@ -12,18 +12,30 @@ function saveFlow() {
     var words = getWordCount(text);
     var flowing = false;
     var flow_time = getTime() - sv_time;
-    var flow_score = Math.round(words * flow_time / 1000);
+    //var flow_score = Math.round(words * flow_time / 1000);
 
     $('.tekstflyt').before("<div><p>" + text + "</p></div>");
     $('#playingfield').val("");
 
     wordcount += words;
-    score += flow_score;
+    score += getScore(text, flow_time);
 
     $('#scoreboard').html("Words: <b>" + wordcount + "</b> - Score: <b>" + score + "</b>");
 
     updateFlowStatus();
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+}
+
+// scores should be higher the longer the text is
+// scores should be higher the longer the time is
+// scores should be higher the higher the ratio of text to time is
+function getScore(text, time) {
+    var chars = text.length;
+    var words = getWordCount(text);
+    var seconds = time / 1000;
+    var wpm = (words / seconds) * 60;
+    var score = words*5 + Math.round(chars * seconds * Math.pow(wpm / 40, 40 / wpm) / 10);
+    return score;
 }
 
 function getWordCount(text) {

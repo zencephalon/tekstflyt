@@ -32,9 +32,8 @@ function saveFlow() {
 function getScore(text, time) {
     var chars = text.length;
     var words = getWordCount(text);
-    var seconds = time / 1000;
-    var wpm = (words / seconds) * 60;
-    var score = words*5 + Math.round(chars * seconds * Math.pow(wpm / 40, 40 / wpm) / 10);
+    var wpm = (words / time) * 60;
+    var score = words*5 + Math.round(chars * time * Math.pow(wpm / 40, 40 / wpm) / 10);
     return score;
 }
 
@@ -53,7 +52,9 @@ updateFlowStatus = function() {
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
-    $('.stats').html('<h2><p>Chars: <b>' + chars + '</b></p><p>Words: <b>' + words + '</b></p></h2>');
+    var seconds = getElapsedSeconds();
+    var wpm = Math.round(words / seconds * 60);
+    $('.stats').html('<h2>Words: <b>' + words + '</b> | WPM: <b>' + wpm + '</b></p></h2>');
 }
 
 updateFlowState = function() {
@@ -72,6 +73,10 @@ updateFlowState = function() {
 
 function getTime() {
     return (new Date).getTime();
+}
+
+function getElapsedSeconds() {
+    return (getTime() - sv_time) / 1000;
 }
 
 document.getElementById("playingfield").onkeyup = updateFlowState;

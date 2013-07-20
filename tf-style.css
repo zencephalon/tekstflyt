@@ -1,14 +1,14 @@
 body {
     background-color: #ffffff;
 }
-.deft {
+#playingfield {
     font-size: 1.4em;
     margin-right: 30px;
     background-color: #ffffff;
     width: 30em;
     height: 14em;
 }
-.drafts {
+.tekstflyt {
     float: left;
     width: 30em;
     position: relative;

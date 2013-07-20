@@ -10,7 +10,7 @@ function saveFlow() {
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
-    var flow_time = getTime() - sv_time;
+    var flow_time = getElapsedSeconds();
     //var flow_score = Math.round(words * flow_time / 1000);
 
     $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
@@ -34,7 +34,7 @@ function getScore(text, time) {
     var chars = text.length;
     var words = getWordCount(text);
     var wpm = (words / time) * 60;
-    var score = words*5 + Math.round(chars * time * Math.pow(wpm / 40, 40 / wpm) / 10);
+    var score = Math.round(words*5*wpm/40);
     return score;
 }
 
@@ -55,7 +55,7 @@ updateFlowStatus = function() {
     var words = getWordCount(text);
     var seconds = getElapsedSeconds();
     var wpm = Math.round(words / seconds * 60);
-    $('.stats').html('<h2>Words: <b>' + words + '</b> | WPM: <b>' + wpm + '</b></p></h2>');
+    $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
 }
 
 updateFlowState = function() {

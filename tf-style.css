@@ -3,6 +3,7 @@ body {
     background: url('assets/images/debut_light.png');
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
+    text-align: center;
 }
 
 h2 {
@@ -10,23 +11,29 @@ h2 {
     font-size: 2em;
 }
 
-#playingfield {
+p {
+    line-height: 0px;
+
+}
+
+textarea#playingfield {
+    width: 100%;
     font-size: 1.4em;
     margin-right: 30px;
     background-color: #ffffff;
-    width: 26em;
     height: 14em;
     border-radius: 5px;
     font-weight: 200;
 }
+
+.text-wrapper {
+    text-align: center;
+}
+
 .tekstflyt {
-    float: left;
-    width: 30em;
     position: relative;
-    margin-right: 1em;
 }
 .stats {
-    float: left;
     padding-right: 1em;
 }
 #buffers {

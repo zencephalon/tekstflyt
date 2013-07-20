@@ -20,7 +20,7 @@ function saveFlow() {
     wordcount += words;
     score += flow_score;
 
-    $('#scoreboard').html("Words: <b>" + wordcount + "</b> - Score: <b>" + score + "</b>");
+    $('#scoreboard').html("Words: <b>" + wordcount + "</b> <br> Score: <b>" + score + "</b>");
 
     updateFlowStatus();
 }

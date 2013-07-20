@@ -1,11 +1,15 @@
 body {
     background-color: #ffffff;
     background: url('assets/images/debut_light.png');
-/*    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-*/  font-weight: 300;
-    font-family: 'Futura';
+    font-weight: 300;
+    font-family: 'Latex';
     text-align: center;
     color:  #585858;
+}
+
+@font-face {
+    font-family: 'Latex'; 
+    src: url('assets/CMU/cmunrm.ttf'); 
 }
 
 h2 {
@@ -15,12 +19,13 @@ h2 {
 
 textarea#playingfield {
     width: 100%;
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin-right: 30px;
     background-color: #ffffff;
     height: 14em;
     border-radius: 5px;
     font-weight: 200;
+    font-family: 'Latex';
 }
 
 a {
@@ -85,10 +90,10 @@ a:hover {
 #forkongithub a {
     background:#1ea1c2;
     color:#fff;
-    text-decoration:none;
-    font-family:arial, sans-serif;
-    text-align:center;
-    font-weight:bold;
+    text-decoration: none;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    text-align: center;
+    font-weight: bold;
     padding:5px 40px;
     font-size:1rem;
     line-height:2rem;

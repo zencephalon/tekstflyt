@@ -5,10 +5,19 @@ var current = 0;
 var commits = 0;
 
 function saveFlow() {
-    var val = $('#playingfield').val();
-    $('.tekstflyt').before("<div><p>" + val + "</p></div>");
+    var text = $('#playingfield').val();
+    $('.tekstflyt').before("<div><p>" + text + "</p></div>");
     $('#playingfield').val("");
 }
+
+updateFlowStatus = function() {
+    var text = $('#playingfield').val();
+    var chars = text.length;
+    var words = text.split(" ").length;
+    $('.stats').html('<p>chars: <b>' + chars + '</b> words: <b>' + words + '</b></p>');
+}
+
+document.getElementById("playingfield").onkeyup = updateFlowStatus;
 
 function Buffer(text, cursor) {
     this.text = text; this.cursor = cursor;

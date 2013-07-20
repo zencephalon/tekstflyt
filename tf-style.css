@@ -12,6 +12,11 @@ body {
     src: url('assets/CMU/cmunrm.ttf'); 
 }
 
+@font-face {
+    font-family: 'typewriter';
+    src: url('assets/CMU/cmuntb.ttf');
+}
+
 h2 {
     font-weight: 200;
     font-size: 2em;
@@ -37,6 +42,14 @@ a:hover {
     color: #68d0dc;
 }
 
+.encouragement {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'typewriter';
+    color: #1ea1c2;
+    font-size: 1.6em;
+}
+
 .text-wrapper {
     text-align: center;
 }
@@ -46,7 +59,6 @@ a:hover {
 }
 .stats {
     line-height: 0px;
-    margin-top: 50px;
 }
 
 #stars {

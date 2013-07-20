@@ -27,17 +27,17 @@ function saveFlow() {
 
 function displayEncouragement(score) {
     var word;
-    if (score > 10) { word = "okay"; }
-    if (score > 20) { word = "cool"; }
-    if (score > 40) { word = "nice"; }
-    if (score > 60) { word = "sweet"; }
-    if (score > 80) { word = "great"; }
-    if (score > 120) { word = "awesome"; }
-    if (score > 160) { word = "amazing"; }
-    if (score > 200) { word = "incredible"; }
-    if (score > 280) { word = "spectacular"; }
-    if (score > 360) { word = "unbelievable"; }
-    if (score > 440) { word = "extraordinary"; }
+    if (score > 50) { word = "okay"; }
+    if (score > 100) { word = "cool"; }
+    if (score > 200) { word = "nice"; }
+    if (score > 300) { word = "sweet"; }
+    if (score > 400) { word = "great"; }
+    if (score > 600) { word = "awesome"; }
+    if (score > 800) { word = "amazing"; }
+    if (score > 1000) { word = "incredible"; }
+    if (score > 1400) { word = "spectacular"; }
+    if (score > 1800) { word = "unbelievable"; }
+    if (score > 2200) { word = "extraordinary"; }
     $('.encouragement').html(word + " flow!");
     $('.encouragement').css("display", "block");
 }

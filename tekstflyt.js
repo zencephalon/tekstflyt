@@ -23,7 +23,7 @@ function saveFlow() {
     $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
 
     updateFlowStatus();
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
 }
 
 // scores should be higher the longer the text is

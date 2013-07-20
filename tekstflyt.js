@@ -37,6 +37,13 @@ function getWordCount(text) {
 }
 
 updateFlowStatus = function() {
+    var text = $('#playingfield').val();
+    var chars = text.length;
+    var words = getWordCount(text);
+    $('.stats').html('<p>chars: <b>' + chars + '</b></p><p>words: <b>' + words + '</b></p>');
+}
+
+updateFlowState = function() {
     if (! flowing) {
         sv_time = getTime();
         flowing = true;
@@ -44,10 +51,9 @@ updateFlowStatus = function() {
     if (saveFlowTimeout) {
         window.clearTimeout(saveFlowTimeout);
     }
-    var text = $('#playingfield').val();
-    var chars = text.length;
-    var words = getWordCount(text);
-    $('.stats').html('<p>chars: <b>' + chars + '</b></p><p>words: <b>' + words + '</b></p>');
+    
+    updateFlowStatus();
+
     saveFlowTimeout = window.setTimeout(saveFlow, 1000);
 }
 
@@ -55,7 +61,7 @@ function getTime() {
     return (new Date).getTime();
 }
 
-document.getElementById("playingfield").onkeyup = updateFlowStatus;
+document.getElementById("playingfield").onkeyup = updateFlowState;
 
 //function bind(sc, f) {
 //    Mousetrap.bind(sc, function(e) {

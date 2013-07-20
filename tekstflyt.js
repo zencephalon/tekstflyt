@@ -10,7 +10,6 @@ function saveFlow() {
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
-    var flowing = false;
     var flow_time = getTime() - sv_time;
     //var flow_score = Math.round(words * flow_time / 1000);
 
@@ -24,6 +23,8 @@ function saveFlow() {
 
     updateFlowStatus();
     $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
+
+    flowing = false;
 }
 
 // scores should be higher the longer the text is

@@ -11,21 +11,54 @@ function saveFlow() {
     var chars = text.length;
     var words = getWordCount(text);
     var flow_time = getElapsedSeconds();
-    //var flow_score = Math.round(words * flow_time / 1000);
 
-    $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
-    $('#playingfield').val("");
+    freezeFlowAndReset(text);
 
     wordcount += words;
     score += getScore(text, flow_time);
 
-    $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
+    scoreBoardUpdate(wordcount, score);
 
     updateFlowStatus();
-    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
+    displayEncouragement(score);
 
     flowing = false;
 }
+
+function displayEncouragement(score) {
+    var word;
+    if (score > 10) { word = "okay"; }
+    if (score > 20) { word = "cool"; }
+    if (score > 40) { word = "nice"; }
+    if (score > 60) { word = "sweet"; }
+    if (score > 80) { word = "great"; }
+    if (score > 120) { word = "awesome"; }
+    if (score > 160) { word = "amazing"; }
+    if (score > 200) { word = "incredible"; }
+    if (score > 280) { word = "spectacular"; }
+    if (score > 360) { word = "unbelievable"; }
+    if (score > 440) { word = "extraordinary"; }
+    $('.encouragement').html(word + " flow!");
+    $('.encouragement').css("display", "block");
+}
+
+function hideEncouragement() {
+    $('.encouragement').css("display", "none");
+}
+
+function freezeFlowAndReset(text) {
+    $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
+    $('#playingfield').val("");
+}
+
+function scoreBoardUpdate(wordcount, score) {
+    $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
+}
+
+function scroll() {
+    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
+}
+
 
 // scores should be higher the longer the text is
 // scores should be higher the longer the time is
@@ -61,6 +94,7 @@ updateFlowStatus = function() {
 updateFlowState = function() {
     if (! flowing) {
         sv_time = getTime();
+        hideEncouragement();
         flowing = true;
     }
     if (saveFlowTimeout) {
@@ -80,7 +114,7 @@ function getElapsedSeconds() {
     return (getTime() - sv_time) / 1000;
 }
 
-document.getElementById("playingfield").onkeyup = updateFlowState;
+document.getElementById("playingfield").oninput = updateFlowState;
 
 //function bind(sc, f) {
 //    Mousetrap.bind(sc, function(e) {

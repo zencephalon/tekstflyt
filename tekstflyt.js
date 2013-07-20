@@ -23,6 +23,7 @@ function saveFlow() {
     $('#scoreboard').html("Words: <b>" + wordcount + "</b> - Score: <b>" + score + "</b>");
 
     updateFlowStatus();
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 function getWordCount(text) {

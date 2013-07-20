@@ -8,13 +8,26 @@ function saveFlow() {
     var text = $('#playingfield').val();
     $('.tekstflyt').before("<div><p>" + text + "</p></div>");
     $('#playingfield').val("");
+    updateFlowStatus();
+}
+
+function getWordCount(text) {
+    if (text == "") {
+        return 0;
+    }
+
+    s = text.replace(/(^\s*)|(\s*$)/gi,"");
+    s = s.replace(/[ ]{2,}/gi," ");
+    s = s.replace(/\n /,"\n");
+    return s.split(' ').length;
 }
 
 updateFlowStatus = function() {
     var text = $('#playingfield').val();
     var chars = text.length;
-    var words = text.split(" ").length;
-    $('.stats').html('<p>chars: <b>' + chars + '</b> words: <b>' + words + '</b></p>');
+    var words = getWordCount(text);
+    $('.stats').html('<p>chars: <b>' + chars + '</b></p><p>words: <b>' + words + '</b></p>');
+    window.setTimeout(saveFlow, 1000);
 }
 
 document.getElementById("playingfield").onkeyup = updateFlowStatus;

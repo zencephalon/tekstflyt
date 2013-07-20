@@ -1,8 +1,6 @@
 // saved buffer
-var sbuffer = new Buffer('', 0);
-var buffers = [sbuffer];
-var current = 0;
-var commits = 0;
+
+var saveFlowTimeout = null;
 
 function saveFlow() {
     var text = $('#playingfield').val();
@@ -23,11 +21,14 @@ function getWordCount(text) {
 }
 
 updateFlowStatus = function() {
+    if (saveFlowTimeout) {
+        window.clearTimeout(saveFlowTimeout);
+    }
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
     $('.stats').html('<p>chars: <b>' + chars + '</b></p><p>words: <b>' + words + '</b></p>');
-    window.setTimeout(saveFlow, 1000);
+    saveFlowTimeout = window.setTimeout(saveFlow, 1000);
 }
 
 document.getElementById("playingfield").onkeyup = updateFlowStatus;

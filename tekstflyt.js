@@ -1,27 +1,13 @@
-$(document).ready(function() {
-    $('.drafts').cycle({
-		fx: 'shuffle', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
-                timeout: 0,
-                next: '#next',
-                prev: '#prev',
-                speed: 250
-	});
-});
-
 // saved buffer
 var sbuffer = new Buffer('', 0);
 var buffers = [sbuffer];
 var current = 0;
 var commits = 0;
-var current_illusion = "esil";
 
-function switch_illusion() {
-    current_illusion = (current_illusion == "esil") ? "isar" : "esil";
-    $('#' + current_illusion).focus();
-}
-
-function illusion() {
-    return document.getElementById(current_illusion);
+function saveFlow() {
+    var val = $('#playingfield').val();
+    $('.tekstflyt').before("<div><p>" + val + "</p></div>");
+    $('#playingfield').val("");
 }
 
 function Buffer(text, cursor) {

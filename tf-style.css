@@ -14,6 +14,9 @@ body {
     position: relative;
     margin-right: 1em;
 }
+.stats {
+    float: right;
+}
 #buffers {
     text-align: right;
 }

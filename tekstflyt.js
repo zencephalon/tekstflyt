@@ -28,6 +28,7 @@ function saveFlow() {
 
 function displayEncouragement(score) {
     var word;
+    word = "pathetic";
     if (score > 50) { word = "okay"; }
     if (score > 100) { word = "cool"; }
     if (score > 200) { word = "nice"; }

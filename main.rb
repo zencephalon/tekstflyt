@@ -47,6 +47,10 @@ class Prose < Sinatra::Base
 
     # ====================== Drafts ===============================================
 
+    get "/tekstflyt" do
+        liquid :tekstflyt
+    end
+
     ["/draft", "/d"].each do |path|
         post "#{path}", :auth => :writer do
             if params[:branch].empty?

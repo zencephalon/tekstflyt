@@ -24,6 +24,26 @@ a {
     src: url('/assets/CMU/cmuntb.ttf');
 }
 
+input {
+  font-size: 20px;
+  border-radius: 4px;
+  border: solid 1px #585858;
+  cursor: text;
+}
+
+.btn {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #1ea1c2;
+  border-color: #1ea1c2;
+}
+
+.btn:hover {
+  color: #1ea1c2;
+  background-color: #ffffff;
+  border-color: #1ea1c2;
+}
+
 @font-face {
   font-family: 'Open Sans';
   src: url('/assets/OpenSans/OpenSans-Regular.ttf');

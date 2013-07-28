@@ -2,7 +2,8 @@ body {
     font-family: "Open Sans"; 
     font-size: 130%; 
     line-height: 130%; 
-    background-color: #EBF7F8;
+    color: #585858;
+    background: url('/assets/images/debut_light.png');
 }
 
 img #logo {
@@ -51,17 +52,39 @@ a {
   font-style: normal;
 }
 
-footer { font-size: 0.7em; margin-top: 2em;}
-header { margin-bottom: 1em; }
+a {
+  color: #1ea1c2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #68d0dc;
+}
+
+footer { 
+  /*font-size: 0.7em; 
+  margin-top: 2em;*/
+  line-height: 4em;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-top: 1px solid #D2D2D2;
+  min-height: 46px;
+}
+
+header { 
+  margin-bottom: 1em; 
+}
 
 #content { 
     margin: 0 auto;
-    max-width: 37em; 
-    background-color: #fff;
+    /*max-width: 37em;*/ 
+    /*background-color: #fff;*/
     padding: .4em;
-    border-color: #D0E0EB;
-    border-style: solid;
-    border-width: .2em;
+    text-align: center;
+    /*border-color: #68d0dc;*/
+    /*border-style: solid;
+    border-width: .2em;*/
 }
 
 code {
@@ -77,4 +100,60 @@ code {
     color: #52595d;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+}
+
+#forkongithub a {
+    background:#1ea1c2;
+    color:#fff;
+    text-decoration: none;
+    font-family: "Open Sans";
+    text-align: center;
+    font-weight: 300;
+    padding:5px 40px;
+    font-size:1rem;
+    line-height:2rem;
+    position:relative;
+    transition:0.5s;
+}
+    
+#forkongithub a:hover {
+    background:#68d0dc;
+    color:#fff;
+}
+
+#forkongithub a::before, #forkongithub a::after {
+    content:"";
+    width:100%;
+    display:block;
+    position:absolute;
+    top:1px;
+    left:0;
+    height:1px;
+    background:#fff;
+}
+
+#forkongithub a::after {
+    bottom:1px;
+    top:auto;
+}
+
+@media screen and (min-width:800px){
+    #forkongithub{
+        position:absolute;
+        display:block;
+        top:0;
+        right:0;
+        width:200px;
+        overflow:hidden;
+        height:200px;
+    }
+    #forkongithub a {
+        width:200px;
+        position:absolute;
+        top:60px;
+        right:-60px;
+        transform:rotate(45deg);
+        -webkit-transform:rotate(45deg);
+        box-shadow:4px 4px 10px rgba(0,0,0,0.8);    
+    }
 }

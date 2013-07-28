@@ -11,21 +11,55 @@ function saveFlow() {
     var chars = text.length;
     var words = getWordCount(text);
     var flow_time = getElapsedSeconds();
-    //var flow_score = Math.round(words * flow_time / 1000);
 
-    $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
-    $('#playingfield').val("");
+    freezeFlowAndReset(text);
 
     wordcount += words;
-    score += getScore(text, flow_time);
+    current_score = getScore(text, flow_time);
+    score += current_score;
 
-    $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
+    scoreBoardUpdate(wordcount, score);
 
     updateFlowStatus();
-    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
+    displayEncouragement(current_score);
 
     flowing = false;
 }
+
+function displayEncouragement(score) {
+    var word;
+    if (score > 50) { word = "okay"; }
+    if (score > 100) { word = "cool"; }
+    if (score > 200) { word = "nice"; }
+    if (score > 300) { word = "sweet"; }
+    if (score > 400) { word = "great"; }
+    if (score > 600) { word = "awesome"; }
+    if (score > 800) { word = "amazing"; }
+    if (score > 1000) { word = "incredible"; }
+    if (score > 1400) { word = "spectacular"; }
+    if (score > 1800) { word = "unbelievable"; }
+    if (score > 2200) { word = "extraordinary"; }
+    $('.encouragement').html("<h2>" + word + " flow!</h2>");
+    $('.encouragement').css("display", "block");
+}
+
+function hideEncouragement() {
+    $('.encouragement').css("display", "none");
+}
+
+function freezeFlowAndReset(text) {
+    $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
+    $('#playingfield').val("");
+}
+
+function scoreBoardUpdate(wordcount, score) {
+    $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
+}
+
+function scroll() {
+    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
+}
+
 
 // scores should be higher the longer the text is
 // scores should be higher the longer the time is
@@ -61,6 +95,7 @@ updateFlowStatus = function() {
 updateFlowState = function() {
     if (! flowing) {
         sv_time = getTime();
+        hideEncouragement();
         flowing = true;
     }
     if (saveFlowTimeout) {
@@ -80,7 +115,7 @@ function getElapsedSeconds() {
     return (getTime() - sv_time) / 1000;
 }
 
-document.getElementById("playingfield").onkeyup = updateFlowState;
+document.getElementById("playingfield").oninput = updateFlowState;
 
 //function bind(sc, f) {
 //    Mousetrap.bind(sc, function(e) {

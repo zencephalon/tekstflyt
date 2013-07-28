@@ -2,9 +2,9 @@
 Branch = Struct.new :_id, :d, :st, :et, :df
 
 class BranchManager
-    def initialize(prosedy)
-        @prosedy = prosedy
-        @branch_db = @prosedy.db.collection('branches')
+    def initialize(tekstflyt)
+        @tekstflyt = tekstflyt
+        @branch_db = @tekstflyt.db.collection('branches')
     end
 
     def create(branch)

@@ -6,16 +6,16 @@ require 'mongo'
 require 'redcloth'
 require 'puma'
 
-require_relative './prosedy/prosedy'
+require_relative './tekstflyt/tekstflyt'
 
 class Prose < Sinatra::Base
     enable :sessions
     set :bind, '0.0.0.0'
 
-    $prosedy = Prosedy.new(Mongo::MongoClient.new('localhost', 27017))
-    $writer_m = $prosedy.writer_m
-    $draft_m = $prosedy.draft_m
-    $branch_m = $prosedy.branch_m
+    $tekstflyt = Tekstflyt.new(Mongo::MongoClient.new('localhost', 27017))
+    $writer_m = $tekstflyt.writer_m
+    $draft_m = $tekstflyt.draft_m
+    $branch_m = $tekstflyt.branch_m
 
     helpers do
         def logged_in?

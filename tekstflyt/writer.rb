@@ -4,9 +4,9 @@ require 'bcrypt'
 Writer = Struct.new :_id, :n, :dc, :ph, :ps
 
 class WriterManager
-    def initialize(prosedy)
-        @prosedy = prosedy
-        @writer_db = @prosedy.db.collection('writers')
+    def initialize(tekstflyt)
+        @tekstflyt = tekstflyt
+        @writer_db = @tekstflyt.db.collection('writers')
     end
 
     def h_to_st(writer)

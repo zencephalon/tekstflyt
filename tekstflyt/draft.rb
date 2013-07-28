@@ -2,13 +2,13 @@
 Draft = Struct.new :_id, :w, :n, :t, :b, :mk
 
 class DraftManager
-    def initialize(prosedy)
-        @prosedy = prosedy
-        @draft_db = @prosedy.db.collection('drafts')
+    def initialize(tekstflyt)
+        @tekstflyt = tekstflyt
+        @draft_db = @tekstflyt.db.collection('drafts')
     end
 
     def create(w, title, content, diffs)
-        nid = @prosedy.writer_m.inc_draft_c(w._id)
+        nid = @tekstflyt.writer_m.inc_draft_c(w._id)
 
         draft_id = BSON::ObjectId.new
         branch_id = BSON::ObjectId.new
@@ -22,7 +22,7 @@ class DraftManager
             d: draft_id
         }
 
-        @prosedy.branch_m.create(branch)
+        @tekstflyt.branch_m.create(branch)
 
         draft = {   
             _id: draft_id,
@@ -39,7 +39,7 @@ class DraftManager
     end
 
     def update(w, title, content, diffs, branch_id_s)
-        branch = @prosedy.branch_m.update(BSON::ObjectId.from_string(branch_id_s), content, diffs)
+        branch = @tekstflyt.branch_m.update(BSON::ObjectId.from_string(branch_id_s), content, diffs)
         @draft_db.update({_id: branch.d}, {'$set' => {t: title}})
     end
 

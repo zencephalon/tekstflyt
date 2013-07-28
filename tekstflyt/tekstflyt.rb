@@ -6,12 +6,12 @@ require_relative "draft"
 require_relative "revision"
 require_relative "branch"
 
-class Prosedy
+class Tekstflyt
     attr_reader :db, :data_dir, :writer_m, :draft_m, :branch_m
 
     def initialize(client)
         @client = client
-        @db = @client.db('prosedy')
+        @db = @client.db('tekstflyt')
         @data_dir = Pathname.new('../data').expand_path.to_s
         @writer_m = WriterManager.new(self)
         @draft_m = DraftManager.new(self)
@@ -19,10 +19,10 @@ class Prosedy
     end
 
     def increment_user_count
-        @db.collection('prosedy').find_and_modify(:query => {:name => "data"}, :update => {"$inc" => {"users" => 1}}, :new => true)['users']
+        @db.collection('tekstflyt').find_and_modify(:query => {:name => "data"}, :update => {"$inc" => {"users" => 1}}, :new => true)['users']
     end
 
     def increment_draft_count
-        @db.collection('prosedy').find_and_modify(:query => {:name => "data"}, :update => {"$inc" => {"drafts" => 1}}, :new => true)['drafts']
+        @db.collection('tekstflyt').find_and_modify(:query => {:name => "data"}, :update => {"$inc" => {"drafts" => 1}}, :new => true)['drafts']
     end
 end

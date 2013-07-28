@@ -5,6 +5,14 @@ body {
     background-color: #EBF7F8;
 }
 
+img #logo {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
 @font-face {
     font-family: 'Latex'; 
     src: url('/assets/CMU/cmunrm.ttf'); 

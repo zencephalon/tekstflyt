@@ -1,6 +1,6 @@
 body {
     background-color: #ffffff;
-    background: url('assets/images/debut_light.png');
+    background: url('public/assets/images/debut_light.png');
     font-weight: 300;
     font-family: 'Open Sans';
     text-align: center;
@@ -9,38 +9,38 @@ body {
 
 @font-face {
     font-family: 'Latex'; 
-    src: url('assets/CMU/cmunrm.ttf'); 
+    src: url('/assets/CMU/cmunrm.ttf'); 
 }
 
 @font-face {
     font-family: 'typewriter';
-    src: url('assets/CMU/cmuntb.ttf');
+    src: url('/assets/CMU/cmuntb.ttf');
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('assets/OpenSans/OpenSans-Regular.ttf');
+  src: url('/assets/OpenSans/OpenSans-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('assets/OpenSans/OpenSans-Light.ttf');
+  src: url('public/assets/OpenSans/OpenSans-Light.ttf');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('assets/OpenSans/OpenSans-Semibold.ttf');
+  src: url('public/assets/OpenSans/OpenSans-Semibold.ttf');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('assets/OpenSans/OpenSans-Bold.ttf');
+  src: url('public/assets/OpenSans/OpenSans-Bold.ttf');
   font-weight: 700;
   font-style: normal;
 }

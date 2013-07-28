@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem 'bcrypt-ruby'
+gem 'sinatra'
+gem 'haml'
+gem 'mongo'
+gem 'liquid'
+gem 'RedCloth'
+gem 'puma'

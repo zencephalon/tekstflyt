@@ -15,12 +15,13 @@ function saveFlow() {
     freezeFlowAndReset(text);
 
     wordcount += words;
-    score += getScore(text, flow_time);
+    current_score = getScore(text, flow_time);
+    score += current_score;
 
     scoreBoardUpdate(wordcount, score);
 
     updateFlowStatus();
-    displayEncouragement(score);
+    displayEncouragement(current_score);
 
     flowing = false;
 }
@@ -38,7 +39,7 @@ function displayEncouragement(score) {
     if (score > 1400) { word = "spectacular"; }
     if (score > 1800) { word = "unbelievable"; }
     if (score > 2200) { word = "extraordinary"; }
-    $('.encouragement').html(word + " flow!");
+    $('.encouragement').html("<h2>" + word + " flow!</h2>");
     $('.encouragement').css("display", "block");
 }
 

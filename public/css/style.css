@@ -31,16 +31,24 @@ input {
   cursor: text;
 }
 
+input[placeholder] {
+  padding: 5px;
+}
+
+.btn-holder {
+  text-align: right;
+}
+
+.signup-wrapper {
+  width: 18%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .btn {
   cursor: pointer;
   color: #ffffff;
   background-color: #1ea1c2;
-  border-color: #1ea1c2;
-}
-
-.btn:hover {
-  color: #1ea1c2;
-  background-color: #ffffff;
   border-color: #1ea1c2;
 }
 

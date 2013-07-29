@@ -1,16 +1,18 @@
 <p>Enter the username and password!</p>
 <form action="/signup" method="post">
-    <div>
-        <input id="username" type="text" name="username" placeholder='Username' />
-    </div>
-    <div>
-        <input id="password" type="password" name="password" placeholder='Password'/>
-    </div>
-    <div>
-        <input id="password" type="password" name="checkpassword" placeholder='Confirm password' />
-    </div>
-    <div>
-        <input type="submit" class='btn' value="Sign Up" />
-        <input type="reset" class='btn' value="Clear" />
+    <div class='signup-wrapper'>
+        <div>
+            <input id="username" type="text" name="username" placeholder='Username' />
+        </div>
+        <div>
+            <input id="password" type="password" name="password" placeholder='Password'/>
+        </div>
+        <div>
+            <input id="password" type="password" name="checkpassword" placeholder='Confirm password' />
+        </div>
+        <div class='btn-holder'>
+            <input type="submit" class='btn' value="Sign Up" />
+            <input type="reset" class='btn' value="Clear" />
+        </div>
     </div>
 </form>

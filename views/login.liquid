@@ -1,17 +1,17 @@
 <form action="/login" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" />
+    <div class='signup-wrapper'>
+        <div>
+            <input id="username" type="text" name="username" placeholder="Username"/>
+        </div>
+        <div>
+            <input id="password" type="password" name="password" placeholder="Password"/>
+        </div>
+        <div class='btn-holder'>
+            <input type="submit" class='btn' value="Log in" />
+            <input type="reset" class='btn' value="Clear" />
+        </div>
+        <p>
+            <a href="/signup">Signup</a>
+        </p>
     </div>
-    <div>
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" />
-    </div>
-    <div>
-        <input type="submit" class='btn' value="Login" />
-        <input type="reset" class='btn' value="Clear" />
-    </div>
-    <p>
-        <a href="/signup">Signup</a>
-    </p>
 </form>

@@ -31,7 +31,7 @@ function switch_playback() {
 
         $('#playback_button').html("view finished text");
         $('#deft').css("display","inline");
-        $('#buffers').css("display","inline");
+        $('#buffers').css("display","block");
         $('#text').css("display","none");
         start_pb();
     }

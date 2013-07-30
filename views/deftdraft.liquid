@@ -3,8 +3,9 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta charset="utf-8">
+<link rel="shortcut icon" href="/assets/images/favicon.png?v=2"/>
 
-<title>DeftDraft</title>
+<title>Tekstflyt</title>
 
 <script src="/js/dd/mousetrap.min.js"></script>
 <!-- include jQuery library -->
@@ -30,9 +31,9 @@
             <input type="hidden" id="diffs" name="diffs" value="{{diffs}}"/>
             <input type="hidden" id="branch" name="branch" value="{{branch}}"/>
             <textarea class="textarea mousetrap" id="deft" name="deft" placeholder="Once upon a time in a land far, far away...">{{text}}</textarea>
-            <div id="sidebar">
+            <div class='dd-sidebar'>
                 <input type="text" id="title" name="title" placeholder="The Story without a Title" value="{{title}}">
-                <input type="submit" value="Submit draft!" />
+                <input type="submit" value="Submit draft!" class='btn'/>
                 <p>Welcome. <em>DD</em> has two unique concepts you need to know about: drafts and commits.</p>
                 <p>Type some text. Then <em>hit ctrl-space</em>. You used the <b>scratch</b> command which: saves the current draft, starts a new draft at the last commit.</p>
                 <p>Type more text, then <b>scratch</b> again. Now <em>hit ctrl-h</em>. You are back to your second draft. Type some more text here, then <em>hit ctrl-h</em>. You are back to your first draft. <b>Cycle</b> in the other direction: <em>hit ctrl-l</em>.</p>
@@ -48,10 +49,9 @@
             </div>
         </form>
     </div>
-    <footer>
-    <hr>
-    Made with love in 2013.
-    </footer>
+    <div class='footer'>
+        Made with ♥ in NYC.
+    </div>
 </body>
 <script src="/js/dd/caret.js"></script>
 <script src="/js/dd/deftdraft.js"></script>

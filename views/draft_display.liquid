@@ -26,16 +26,14 @@
 <body>
     <div id="content">
         <input type="hidden" id="diffs" name="diffs" value="{{diffs}}"/>
-        <h2>{{title}}
+        <h2>{{title}}</h2>
             <div id="buffers" style="display: none;"></div>
-        </br>
-            <a href="#" id="playback_button" onclick="switch_playback()">view playback</a>
-        </h2>
+           <div class='draft-btn-holder'><a href="#" class='btn' id="playback_button" onclick="switch_playback()">view playback</a></div>
         <div id="text">
             {{text}}
         </div>
         
-        <div id="deft" style="display:none;">{{starting_text}}</div>
+        <div class='deft-wrapper' style="display:none"><div id="deft" style="display:none;">{{starting_text}}</div></div>
 
         <footer>
         Made with love in 2013.

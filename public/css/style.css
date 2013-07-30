@@ -10,10 +10,6 @@ img #logo {
     text-align: center;
 }
 
-a {
-    text-decoration: none;
-}
-
 @font-face {
     font-family: 'Latex'; 
     src: url('/assets/CMU/cmunrm.ttf'); 
@@ -42,6 +38,10 @@ input[placeholder] {
   margin-top: 5px;
 }
 
+.draft-btn-holder {
+  padding: 10px;
+}
+
 .signup-wrapper {
   width: 22%;
   margin-left: auto;
@@ -54,6 +54,8 @@ input[placeholder] {
   color: #ffffff;
   background-color: #1ea1c2;
   border-color: #1ea1c2;
+  border-radius: 4px;
+  font-weight: 300;
 }
 
 @font-face {
@@ -87,10 +89,6 @@ input[placeholder] {
 a {
   color: #1ea1c2;
   text-decoration: none;
-}
-
-a:hover {
-  color: #68d0dc;
 }
 
 footer { 
@@ -129,15 +127,24 @@ ul {
 
 #playback_button {
   font-size: 16px;
-  padding: 5px;
+  padding: 10px;
 }
 
 #buffers {
   display: block;
-  font-size: 50%;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 0;
+}
+
+.deft-wrapper {
+  padding-top: 25px;
 }
 
 code {

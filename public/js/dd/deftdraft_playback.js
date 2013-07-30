@@ -20,6 +20,7 @@ function switch_playback() {
     if (playback_view_toggled) {
         $('#playback_button').html("view playback");
         $('#deft').css("display","none");
+        $('.deft-wrapper').css('display', 'none')
         $('#buffers').css("display","none");
         $('#text').css("display","inline");
     }
@@ -30,6 +31,7 @@ function switch_playback() {
         }
 
         $('#playback_button').html("view finished text");
+        $('.deft-wrapper').css('display', 'block')
         $('#deft').css("display","inline");
         $('#buffers').css("display","block");
         $('#text').css("display","none");

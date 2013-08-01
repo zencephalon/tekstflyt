@@ -42,6 +42,10 @@ class WriterManager
         @writer_db.find_and_modify(query: {_id: id}, update: {'$inc' => {dc: 1}}, fields: {dc: true}, new: true)['dc']
     end
 
+    def find_all
+        return @writer_db.find().to_a
+    end
+
     def find_by_name(name)
         writer = @writer_db.find_one({n: name})
         return writer ? h_to_st(writer) : nil

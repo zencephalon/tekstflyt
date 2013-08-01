@@ -54,9 +54,9 @@ class Prose < Sinatra::Base
     ["/draft", "/d"].each do |path|
         post "#{path}", :auth => :writer do
             if params[:branch].empty?
-                $draft_m.create(writer, params[:title], params[:deft], params[:diffs])
+                $draft_m.create(writer, params[:title], params[:playingfield], params[:diffs])
             else
-                $draft_m.update(writer, params[:title], params[:deft], params[:diffs], params[:branch])
+                $draft_m.update(writer, params[:title], params[:playingfield], params[:diffs], params[:branch])
             end
             redirect '/'
         end
@@ -67,14 +67,14 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/new", :auth => :writer do
-            liquid :deftdraft, :layout => false, :locals => { title: "", text: "" }
+            liquid :tekstflyt, :layout => false, :locals => { title: "", text: "" }
         end
 
         get "#{path}/:num/edit", :auth => :writer do
             draft = $draft_m.get(writer._id, params[:num])
             branch = $branch_m.get(draft)
             # load the drafts for this draft
-            liquid :deftdraft, :layout => false, :locals => { title: draft.t, text: branch.et, diffs: branch.df, branch: branch._id.to_s }
+            liquid :tekstflyt, :layout => false, :locals => { title: draft.t, text: branch.et, diffs: branch.df, branch: branch._id.to_s }
         end
 
         get "#{path}/:num/view", :auth => :writer do
@@ -99,6 +99,11 @@ class Prose < Sinatra::Base
         w = $writer_m.find_by_name(params[:name])
         drafts = $draft_m.get_by_writer(w._id)
         liquid :public_draft_list, :locals => { drafts: drafts, writer: w.n }
+    end
+
+    get "/w" do
+        writers = $writer_m.find_all
+        liquid :writer_list, :locals => { writers: writers }
     end
 
     get "/signup" do

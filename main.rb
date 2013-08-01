@@ -101,6 +101,11 @@ class Prose < Sinatra::Base
         liquid :public_draft_list, :locals => { drafts: drafts, writer: w.n }
     end
 
+    get "/w" do
+        writers = $writer_m.find_all
+        liquid :writer_list, :locals => { writers: writers }
+    end
+
     get "/signup" do
         liquid :signup, :locals => { :title => "Signup!" }
     end

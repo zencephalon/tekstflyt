@@ -62,7 +62,7 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/new", :auth => :writer do
-            liquid :tekstflyt, :layout => false, :locals => { text: "" }
+            liquid :tekstflyt, :layout => true, :locals => { text: "" }
         end
 
         get "#{path}/:num/view", :auth => :writer do

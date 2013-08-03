@@ -13,16 +13,6 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="shortcut icon" href="/assets/images/favicon.png?v=2" />
 
-<script>
-    $(function(){
-        $('#deft').autosize({callback:
-            function() {
-                $('html, body').animate({ scrollTop: $(document).height()-$(window).height()}, 400, "swing");
-            }
-        });
-    });
-</script>
-
 </head>
 <body>
     <span id="forkongithub"><a href="https://github.com/zencephalon/tekstflyt">Fork me on GitHub</a></span>
@@ -30,15 +20,10 @@
         <header>
                 <a href="/"><img src='/assets/images/tekstflyt.png' id='logo'></a>
             </header>
-        <input type="hidden" id="diffs" name="diffs" value="{{diffs}}"/>
         <h2>{{title}}</h2>
-            <div id="buffers" style="display: none;"></div>
-           <div class='draft-btn-holder'><a href="#" class='btn' id="playback_button" onclick="switch_playback()">view playback</a></div>
         <div id="text">
             {{text}}
         </div>
-        
-        <div class='deft-wrapper' style="display:none"><div id="deft" style="display:none;">{{starting_text}}</div></div>
 
         <footer>
         Made with love in 2013.

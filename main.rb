@@ -62,14 +62,7 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/new", :auth => :writer do
-            liquid :tekstflyt, :layout => false, :locals => { title: "", text: "" }
-        end
-
-        get "#{path}/:num/edit", :auth => :writer do
-            draft = $draft_m.get(writer._id, params[:num])
-            branch = $branch_m.get(draft)
-            # load the drafts for this draft
-            liquid :tekstflyt, :layout => false, :locals => { title: draft.t, text: branch.et, diffs: branch.df, branch: branch._id.to_s }
+            liquid :tekstflyt, :layout => false, :locals => { text: "" }
         end
 
         get "#{path}/:num/view", :auth => :writer do

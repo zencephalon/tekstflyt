@@ -95,6 +95,11 @@ class Prose < Sinatra::Base
         liquid :signup, :locals => { :title => "Signup!" }
     end
 
+    get "/highscores" do
+        flows = $flow_m.get_by_score(20, :asc)
+        liquid :highscores, :locals => { flows: flows }
+    end
+
     post "/signup" do
         username = params[:username]
 

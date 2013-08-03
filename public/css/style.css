@@ -11,24 +11,6 @@ img #logo {
     text-align: center;
 }
 
-#logo-1 {
-  color: #68d0dc;
-  display: inline-block;
-}
-
-#logo-2 {
-  color: #1ea1c2;
-  display: inline-block;
-}
-
-.logo {
-  font-family: "typewriter";
-  display: inline-block;
-  font-size: 130px;
-  padding: 60px;
-  font-weight: 300;
-}
-
 @font-face {
     font-family: 'Latex'; 
     src: url('/assets/CMU/cmunrm.ttf'); 

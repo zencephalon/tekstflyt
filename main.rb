@@ -58,7 +58,7 @@ class Prose < Sinatra::Base
 
         get "#{path}", :auth => :writer do
             flows = $flow_m.get_all_by_writer(writer)
-            liquid :flow_list, :locals => { :flows => flows }
+            liquid :flow_list, :locals => { :flows => flows, :logged_in => logged_in? }
         end
 
         get "#{path}/new", :auth => :writer do

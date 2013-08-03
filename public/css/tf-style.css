@@ -8,10 +8,6 @@ body {
     margin: 0;
 }
 
-header {
-  padding-top: 5%;
-}
-
 @font-face {
     font-family: 'Latex'; 
     src: url('/assets/CMU/cmunrm.ttf'); 
@@ -193,59 +189,3 @@ a:hover {
         /*box-shadow:4px 4px 10px rgba(0,0,0,0.8);*/    
     }
 }
-
-.navbar {
-  position: fixed;
-  width: 100%;
-  background-color: #1ea1c2;
-  z-index: 1;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.2); 
-  height: 50px;
-}
-
-.navbar .brand {
-  color: #fff;
-  text-align: center;
-  width: 10%;
-  margin-top: 10px;
-  font-size: 130%;
-  font-family: 'typewriter';
-  margin-left: 11px;
-
-}
-
-.navbar a {
-  color: #fff;
-}
-
-@media (min-width: 1200px)
-.navbar-container {
-  max-width: 1170px;
-}
-
-.navbar-nav {
-  float: right;
-  margin-top: 0;
-  margin-bottom: 0;
-  width: auto;
-}
-
-.navbar-nav > li {
-  float: left;
-}
-
-.nav-item {
-  color: #fff;
-  margin-right: 20px;
-  font-weight: 300;
-  font-size: 80%;
-}
-
-ul {
-  list-style-type: none;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-

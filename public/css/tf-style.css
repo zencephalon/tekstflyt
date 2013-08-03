@@ -5,6 +5,11 @@ body {
     font-family: 'Open Sans';
     text-align: center;
     color:  #585858;
+    margin: 0;
+}
+
+header {
+  padding-top: 5%;
 }
 
 @font-face {
@@ -144,6 +149,7 @@ a:hover {
     line-height:2rem;
     position:relative;
     transition:0.5s;
+    z-index: 10;
 }
     
 #forkongithub a:hover {
@@ -184,6 +190,26 @@ a:hover {
         right:-60px;
         transform:rotate(45deg);
         -webkit-transform:rotate(45deg);
-        box-shadow:4px 4px 10px rgba(0,0,0,0.8);    
+        /*box-shadow:4px 4px 10px rgba(0,0,0,0.8);*/    
     }
 }
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: #1ea1c2;
+  z-index: 1;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2); 
+}
+
+.navbar .brand {
+  color: #fff;
+  text-align: center;
+  width: 10%;
+  margin-top: 10px;
+  font-size: 130%;
+  font-family: 'typewriter';
+
+}
+

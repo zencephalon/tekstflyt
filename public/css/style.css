@@ -4,6 +4,7 @@ body {
     line-height: 130%; 
     color: #585858;
     background: url('/assets/images/debut_light.png');
+    margin: 0;
 }
 
 img #logo {
@@ -113,6 +114,7 @@ footer {
 
 header { 
   margin-bottom: 1em; 
+  margin-top: 5%;
 }
 
 ul {
@@ -223,6 +225,45 @@ code {
         right:-60px;
         transform:rotate(45deg);
         -webkit-transform:rotate(45deg);
-        box-shadow:4px 4px 10px rgba(0,0,0,0.8);    
+        /*box-shadow:4px 4px 10px rgba(0,0,0,0.8); */   
     }
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: #1ea1c2;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2); 
+}
+
+.navbar .brand {
+  font-family: "typewriter";
+  color: #fff;
+  text-align: center;
+  float: left;
+  margin: 10px 0px 10px 25px;
+}
+
+.navbar-container {
+  margin: 10px;
+}
+
+.navbar a {
+  color: #fff;
+}
+
+@media (min-width: 1200px)
+.navbar-container {
+  max-width: 1170px;
+}
+
+.navbar-nav {
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.navbar-nav > li {
+  float: left;
 }

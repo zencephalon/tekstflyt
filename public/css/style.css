@@ -259,11 +259,19 @@ code {
 }
 
 .navbar-nav {
-  float: left;
+  float: right;
   margin-top: 0;
   margin-bottom: 0;
+  width: auto;
 }
 
 .navbar-nav > li {
   float: left;
+}
+
+.nav-item {
+  color: #fff;
+  margin-right: 20px;
+  font-weight: 300;
+  font-size: 18px;
 }

@@ -14,8 +14,8 @@ class Tekstflyt
         @flow_m = FlowManager.new(self)
     end
 
-    def increment_user_count
-        @db.collection('tekstflyt').find_and_modify(:query => {:name => 'data'}, :update => {'$inc' => {'users' => 1}}, :new => true)['users']
+    def increment_user_count!
+        @db.collection('tekstflyt').find_and_modify(query: {name: 'data'}, update: {'$inc' => {users: 1}}, new: true)['users']
     end
 
     def increment_flow_count

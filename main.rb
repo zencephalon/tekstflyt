@@ -81,7 +81,7 @@ class Prose < Sinatra::Base
         writer = $writer_m.find_by_name(params[:name])
         flow = $flow_m.get(writer, params[:num])
 
-        liquid :flow_display, :layout => false, :locals => locals(:title => flow.title, :text => flow.text, :score => flow.score)
+        liquid :flow_display, :layout => false, :locals => locals(title: flow.title, text: flow.text, score: flow.score)
     end
 
     # ====================== Users ================================================

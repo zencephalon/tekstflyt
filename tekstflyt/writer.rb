@@ -47,6 +47,7 @@ class WriterManager
 
         mongo_obj = writer.to_mongo
         @writer_db.insert(mongo_obj)
+        @tekstflyt.increment_user_count!
 
         return writer.sanitize!
     end

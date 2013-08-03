@@ -66,10 +66,8 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/:num/view", :auth => :writer do
-            draft = $draft_m.get(writer._id, params[:num])
-            branch = $branch_m.get(draft)
-            # load the current draft for this draft
-            liquid :draft_display, :layout => false, :locals => { :title => draft.t, :text => RedCloth.new(branch.et).to_html, :starting_text => branch.st, :diffs => branch.df }
+            flow = $flow_m.get(writer, params[:num])
+            liquid :flow_display, :layout => false, :locals => { title: flow.title, text: flow.text, score: flow.score }
         end
     end
 

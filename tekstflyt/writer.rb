@@ -9,9 +9,9 @@ Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt do
     end
 
     def to_mongo
-        writer, mongo_obj = self.to_h, {}
-        writer.each do |key, val|
-            mongo_obj[WriterManager::RUBY_TO_MONGO[key]] = val if val
+        mongo_obj = {}
+        WriterManager::RUBY_TO_MONGO.each do |key, val|
+            mongo_obj[val] = self[key] if self[key]
         end
         return mongo_obj
     end

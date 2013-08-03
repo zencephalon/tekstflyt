@@ -53,6 +53,7 @@ class WriterManager
 
     def login(name, password)
         writer = find_by_name(name)
+        return nil if writer.nil?
         File.open("log", "w") do |f|
             f.puts writer.password_hash
             f.puts BCrypt::Engine.hash_secret(password, writer.password_salt)
@@ -61,8 +62,8 @@ class WriterManager
     end
 
     # Increment flow count and return the new flow count
-    def inc_flow_count(id)
-        @writer_db.find_and_modify(query: {_id: id}, update: {'$inc' => {fc: 1}}, fields: {fc: true}, new: true)['fc']
+    def inc_flow_count(writer)
+        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$inc' => {fc: 1}}, fields: {fc: true}, new: true)['fc']
     end
 
     def find_all

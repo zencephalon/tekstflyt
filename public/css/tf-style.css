@@ -47,8 +47,9 @@ body {
 }
 
 h2 {
-    font-weight: 200;
-    font-size: 2em;
+  font-weight: 200;
+  font-size: 2em;
+  line-height: 35%;
 }
 
 textarea#playingfield {

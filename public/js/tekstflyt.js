@@ -123,24 +123,3 @@ function saveFlowToServer() {
     var total_text = $('.text-content').text();
     $.post('/flow', { text: total_text, score: score });
 }
-
-//function bind(sc, f) {
-//    Mousetrap.bind(sc, function(e) {
-//        if (e.preventDefault) { e.preventDefault(); } else { e.returnValue = false; }
-//        f();
-//        status();
-//    });
-//}
-//
-//bind('ctrl+h', function() { left(); });
-//bind('ctrl+l', function() { right(); });
-//bind('ctrl+h', function() { left(); });
-//bind('ctrl+l', function() { right(); });
-
-//bind('alt+left', function() { left(); });
-//bind('alt+right', function() { right(); });
-//bind('alt+up', function() { commit(); });
-//bind('alt+down', function() { scratch(); });
-
-//bind('ctrl+s', function() { commit(); });
-//bind('ctrl+space', function() { scratch(); });

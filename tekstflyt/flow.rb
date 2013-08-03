@@ -1,4 +1,4 @@
-Flow = Struct.new :_id, :text, :title, :score, :writer, :number do
+Flow = Struct.new :_id, :text, :title, :score, :writer, :number, :writer_name do
     def to_mongo
         mongo_obj = {}
         FlowManager::RUBY_TO_MONGO.each do |key, val|
@@ -17,7 +17,7 @@ Flow = Struct.new :_id, :text, :title, :score, :writer, :number do
 end
 
 class FlowManager
-    RUBY_TO_MONGO = {_id: :_id, text: :tx, writer: :w, title: :tl, score: :s, number: :n}.freeze
+    RUBY_TO_MONGO = {_id: :_id, text: :tx, writer: :w, title: :tl, score: :s, number: :n, writer_name: :wn}.freeze
     MONGO_TO_RUBY = RUBY_TO_MONGO.invert.freeze
 
     def initialize(tekstflyt)
@@ -37,9 +37,10 @@ class FlowManager
         flow = Flow.new
         flow.text = text
         flow.title = Time.now.strftime("%D %H:%M")
-        flow.score = score
+        flow.score = score.to_i
         flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id
+        flow.writer_name = writer.name
 
         mongo_obj = flow.to_mongo
         @flow_db.insert(mongo_obj)

@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bcrypt'
 
-#Writer = Struct.new :_id, :n, :dc, :ph, :ps
 Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt do
     def sanitize!
         self.password_hash = nil
@@ -9,7 +8,7 @@ Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt do
         self
     end
 
-    def ruby_to_mongo
+    def to_mongo
         writer, mongo_obj = self.to_h, {}
         writer.each do |key, val|
             mongo_obj[WriterManager::RUBY_TO_MONGO[key]] = val if val
@@ -46,7 +45,7 @@ class WriterManager
         writer.password_hash = password_hash
         writer.password_salt = password_salt
 
-        mongo_obj = writer.ruby_to_mongo
+        mongo_obj = writer.to_mongo
         @writer_db.insert(mongo_obj)
 
         return writer.sanitize!

@@ -1,10 +1,18 @@
-Flow = Struct.new :_id, :text, :title, :score do
+Flow = Struct.new :_id, :text, :title, :score, :writer, :number do
     def to_mongo
         flow, mongo_obj = self.to_h, {}
         flow.each do |key, val|
             mongo_obj[FlowManager::RUBY_TO_MONGO[key]] = val if val
         end
         return mongo_obj
+    end
+
+    def to_liquid
+        flow, liquid_obj = self.to_h, {}
+        flow.each do |key, val|
+            liquid_obj[key.to_s] = val if val
+        end
+        return liquid_obj
     end
 end
 

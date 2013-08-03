@@ -49,7 +49,7 @@ function hideEncouragement() {
 }
 
 function freezeFlowAndReset(text) {
-    $('.tekstflyt').before("<div class='text-content'><p>" + text + "</p></div>");
+    $('.tekstflyt').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
     $('#playingfield').val("");
 }
 
@@ -117,6 +117,12 @@ function getElapsedSeconds() {
 }
 
 document.getElementById("playingfield").oninput = updateFlowState;
+
+function saveFlowToServer() {
+    saveFlow();
+    var total_text = $('.text-content').text();
+    $.post('/flow', { text: total_text, score: score });
+}
 
 //function bind(sc, f) {
 //    Mousetrap.bind(sc, function(e) {

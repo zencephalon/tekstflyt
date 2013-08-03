@@ -39,6 +39,10 @@ input[placeholder] {
   margin-top: 5px;
 }
 
+.large-btn-holder {
+  margin: 50px;
+}
+
 .draft-btn-holder {
   padding: 10px;
 }
@@ -57,6 +61,12 @@ input[placeholder] {
   border-color: #1ea1c2;
   border-radius: 4px;
   font-weight: 300;
+}
+
+.btn-large {
+  padding: 10px;
+  font-size: 30px;
+  margin: 10px;
 }
 
 @font-face {

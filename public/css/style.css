@@ -252,6 +252,7 @@ code {
   height: 50px;
   background-color: #1ea1c2;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.2); 
+  z-index: 1000;
 }
 
 .navbar .brand {

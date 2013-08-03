@@ -13,9 +13,8 @@ class Prose < Sinatra::Base
     set :bind, '0.0.0.0'
 
     $tekstflyt = Tekstflyt.new(Mongo::MongoClient.new('localhost', 27017))
+    $flow_m = $tekstflyt.flow_m
     $writer_m = $tekstflyt.writer_m
-    $draft_m = $tekstflyt.draft_m
-    $branch_m = $tekstflyt.branch_m
 
     helpers do
         def logged_in?

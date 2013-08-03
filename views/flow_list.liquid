@@ -1,5 +1,5 @@
 <ul>
-{% for draft in drafts %}
-    <li><a href="/draft/{{draft.n}}/edit">{{ draft.t }}</a> : <a href="/draft/{{draft.n}}/view">view</a></li>
+{% for flow in flows %}
+    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a></li>
 {% endfor %}
 </ul>

@@ -34,12 +34,11 @@ class FlowManager
     end
 
     def create(writer, text, score)
-        number = @tekstflyt.writer_m.inc_flow_count(writer._id)
-
         flow = Flow.new
         flow.text = text
         flow.title = Time.now.strftime("%D %H:%M")
         flow.score = score
+        flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id
 
         mongo_obj = flow.to_mongo
@@ -49,11 +48,11 @@ class FlowManager
     end
 
     def get(writer, number)
-        flow = @flow_db.find_one({:w => writer._id, :n => n.to_i})
+        flow = @flow_db.find_one({:w => writer._id, :n => number.to_i})
         return flow ? mongo_to_ruby(flow) : nil
     end
 
     def get_all_by_writer(writer)
-        @flow_db.find({:w => writer._id}).to_a
+        @flow_db.find({:w => writer._id}).to_a.map {|w| mongo_to_ruby(w).to_liquid}
     end
 end

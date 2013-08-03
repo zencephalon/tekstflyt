@@ -1,5 +1,5 @@
 <ul>
 {% for flow in flows %}
-    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a> — {{ flow.score }} — {{ flow.writer_name }}</li>
+    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.score}} — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 {% endfor %}
 </ul>

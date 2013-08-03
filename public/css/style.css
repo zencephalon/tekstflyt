@@ -11,6 +11,13 @@ img #logo {
     text-align: center;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+  padding: auto;
+}
+
 @font-face {
     font-family: 'Latex'; 
     src: url('/assets/CMU/cmunrm.ttf'); 
@@ -283,5 +290,5 @@ code {
   color: #fff;
   margin-right: 20px;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 80%;
 }

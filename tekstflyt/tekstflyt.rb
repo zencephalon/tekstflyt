@@ -19,6 +19,6 @@ class Tekstflyt
     end
 
     def increment_flow_count
-        @db.collection('tekstflyt').find_and_modify(:query => {:name => 'data'}, :update => {'$inc' => {'flows' => 1}}, :new => true)['flows']
+        @db.collection('tekstflyt').find_and_modify(query: {name: 'data'}, update: {'$inc' => {flows: 1}}, new: true)['flows']
     end
 end

@@ -47,7 +47,7 @@ class Prose < Sinatra::Base
     # =============================================================================
 
     get "/" do
-        liquid :index, :locals => locals(title: "Welcome!")
+        liquid :index, locals: locals(title: "Welcome!")
     end
 
     # ====================== Drafts ===============================================
@@ -57,23 +57,23 @@ class Prose < Sinatra::Base
     end
 
     ["/flow", "/f"].each do |path|
-        post "#{path}", :auth => :writer do
+        post "#{path}", auth: :writer do
             $flow_m.create(writer, params[:text], params[:score])
             redirect '/'
         end
 
-        get "#{path}", :auth => :writer do
+        get "#{path}", auth: :writer do
             flows = $flow_m.get_all_by_writer(writer)
-            liquid :flow_list, :locals => locals(flows: flows)
+            liquid :flow_list, locals: locals(flows: flows)
         end
 
-        get "#{path}/new", :auth => :writer do
-            liquid :tekstflyt, :locals => locals(text: "")
+        get "#{path}/new", auth: :writer do
+            liquid :tekstflyt, locals: locals(text: "")
         end
 
-        get "#{path}/:num/view", :auth => :writer do
+        get "#{path}/:num/view", auth: :writer do
             flow = $flow_m.get(writer, params[:num])
-            liquid :flow_display, :locals => locals(title: flow.title, text: flow.text, score: flow.score)
+            liquid :flow_display, locals: locals(title: flow.title, text: flow.text, score: flow.score)
         end
     end
 
@@ -81,7 +81,7 @@ class Prose < Sinatra::Base
         writer = $writer_m.find_by_name(params[:name])
         flow = $flow_m.get(writer, params[:num])
 
-        liquid :flow_display, :locals => locals(title: flow.title, text: flow.text, score: flow.score)
+        liquid :flow_display, locals: locals(title: flow.title, text: flow.text, score: flow.score)
     end
 
     # ====================== Users ================================================
@@ -89,21 +89,21 @@ class Prose < Sinatra::Base
     get "/w/:name" do
         w = $writer_m.find_by_name(params[:name])
         flows = $flow_m.get_all_by_writer(w)
-        liquid :public_flow_list, :locals => locals(flows: flows, writer: w.name)
+        liquid :public_flow_list, locals: locals(flows: flows, writer: w.name)
     end
 
     get "/w" do
         writers = $writer_m.find_all
-        liquid :writer_list, :locals => locals(writers: writers)
+        liquid :writer_list, locals: locals(writers: writers)
     end
 
     get "/signup" do
-        liquid :signup, :locals => locals(:title => "Signup!")
+        liquid :signup, locals: locals(title: "Signup!")
     end
 
     get "/highscores" do
         flows = $flow_m.get_by_score(20, :asc)
-        liquid :highscores, :locals => locals(flows: flows)
+        liquid :highscores, locals: locals(flows: flows)
     end
 
     post "/signup" do

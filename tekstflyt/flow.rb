@@ -49,12 +49,12 @@ class FlowManager
     end
 
     def get(writer, number)
-        flow = @flow_db.find_one({:w => writer._id, :n => number.to_i})
+        flow = @flow_db.find_one({w: writer._id, n: number.to_i})
         return flow ? mongo_to_ruby(flow) : nil
     end
 
     def get_all_by_writer(writer)
-        @flow_db.find({:w => writer._id}).to_a.map {|f| mongo_to_ruby(f).to_liquid}
+        @flow_db.find({w: writer._id}).to_a.map {|f| mongo_to_ruby(f).to_liquid}
     end
 
     def get_by_score(n, sort)

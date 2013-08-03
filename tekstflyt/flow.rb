@@ -37,7 +37,7 @@ class FlowManager
         flow = Flow.new
         flow.text = text
         flow.title = Time.now.strftime("%D %H:%M")
-        flow.score = score
+        flow.score = score.to_i
         flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id
         flow.writer_name = writer.name

@@ -42,7 +42,7 @@ class Prose < Sinatra::Base
     # =============================================================================
 
     get "/" do
-        liquid :index, :locals => { :writer => writer ? writer.n : nil, :logged_in => logged_in?, :title => "Welcome!" }
+        liquid :index, :locals => { :writer => writer ? writer.name : nil, :logged_in => logged_in?, :title => "Welcome!" }
     end
 
     # ====================== Drafts ===============================================

@@ -33,10 +33,10 @@ class FlowManager
         return flow
     end
 
-    def create(writer, text, score)
+    def create(writer, text, score, title = nil)
         flow = Flow.new
         flow.text = text
-        flow.title = Time.now.strftime("%D %H:%M")
+        flow.title = title || Time.now.strftime("%D %H:%M")
         flow.score = score.to_i
         flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id

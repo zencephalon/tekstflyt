@@ -50,19 +50,15 @@ class Prose < Sinatra::Base
         liquid :tekstflyt
     end
 
-    ["/draft", "/d"].each do |path|
+    ["/flow", "/f"].each do |path|
         post "#{path}", :auth => :writer do
-            if params[:branch].empty?
-                $draft_m.create(writer, params[:title], params[:playingfield], params[:diffs])
-            else
-                $draft_m.update(writer, params[:title], params[:playingfield], params[:diffs], params[:branch])
-            end
+            $flow_m.create(writer, params[:text], params[:score])
             redirect '/'
         end
 
         get "#{path}", :auth => :writer do
-            drafts = $draft_m.get_by_writer(writer._id)
-            liquid :draft_list, :locals => { :drafts => drafts }
+            flows = $flow_m.get_all_by_writer(writer)
+            liquid :flow_list, :locals => { :flows => flows }
         end
 
         get "#{path}/new", :auth => :writer do

@@ -214,10 +214,6 @@ a:hover {
 
 }
 
-.navbar-container {
-  margin: 10px;
-}
-
 .navbar a {
   color: #fff;
 }
@@ -243,6 +239,13 @@ a:hover {
   margin-right: 20px;
   font-weight: 300;
   font-size: 80%;
+}
+
+ul {
+  list-style-type: none;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

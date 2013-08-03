@@ -1,5 +1,5 @@
 <ul>
 {% for flow in flows %}
-    <li>{{ flow.title }} - {{ flow.score }}</li>
+    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a> - {{ flow.score }}</li>
 {% endfor %}
 </ul>

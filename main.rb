@@ -71,20 +71,19 @@ class Prose < Sinatra::Base
         end
     end
 
-    get "/w/:name/d/:num" do
+    get "/w/:name/f/:num" do
         writer = $writer_m.find_by_name(params[:name])
-        draft = $draft_m.get(writer._id, params[:num])
-        branch = $branch_m.get(draft)
-        # load the current draft for this draft
-        liquid :draft_display, :layout => false, :locals => { :title => draft.t, :text => RedCloth.new(branch.et).to_html, :starting_text => branch.st, :diffs => branch.df }
+        flow = $flow_m.get(writer, params[:num])
+
+        liquid :flow_display, :layout => false, :locals => { :title => flow.title, :text => flow.text, :score => flow.score }
     end
 
     # ====================== Users ================================================
 
     get "/w/:name" do
         w = $writer_m.find_by_name(params[:name])
-        drafts = $draft_m.get_by_writer(w._id)
-        liquid :public_draft_list, :locals => { drafts: drafts, writer: w.n }
+        flows = $flow_m.get_all_by_writer(w)
+        liquid :public_flow_list, :locals => { flows: flows, writer: w.name }
     end
 
     get "/w" do

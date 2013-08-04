@@ -147,7 +147,7 @@ ul {
   padding: 0;
 }
 
-#content { 
+.content { 
     margin: 0 auto;
     /*max-width: 37em;*/ 
     /*background-color: #fff;*/
@@ -157,6 +157,11 @@ ul {
     /*border-style: solid;
     border-width: .2em;*/
     font-weight: 300;
+}
+
+.non-header-page {
+  margin-top: 10%;
+  margin-bottom: 5%;
 }
 
 #playback_button {
@@ -378,4 +383,8 @@ label[for='puppies'] {
 
 .btn-option:hover {
   background-color: #1EA1C2;
+}
+
+.timed-mode {
+  font-family: "Open Sans";
 }

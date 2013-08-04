@@ -1,9 +1,11 @@
-<h2>Flows for {{ writer }}</h2>
-<ul>
-{% for flow in flows %}
-    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a></li>
-{% endfor %}
-{% if flows.size < 1 %}
-<p>There are no flows at this time.</p>
-{% endif %}
-</ul>
+<div class='non-header-page'>
+	<h2>Flows for {{ writer }}</h2>
+	<ul>
+	{% for flow in flows %}
+	    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a></li>
+	{% endfor %}
+	{% if flows.size < 1 %}
+	<p>There are no flows at this time.</p>
+	{% endif %}
+	</ul>
+</div>

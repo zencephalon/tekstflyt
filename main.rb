@@ -29,7 +29,7 @@ class Prose < Sinatra::Base
             return session[:writer]
         end
 
-        def locals(hash)
+        def locals(hash = {})
             hash[:writer] = writer ? writer.name : nil
             hash[:logged_in] = logged_in?
             return hash
@@ -68,6 +68,10 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/new", auth: :writer do
+            liquid :mode_select, locals: locals()
+        end
+
+        get "#{path}/edit", auth: :writer do
             liquid :tekstflyt, locals: locals(text: "")
         end
 

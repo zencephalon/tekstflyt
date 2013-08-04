@@ -132,7 +132,7 @@ class Prose < Sinatra::Base
             session[:writer] = writer
             redirect "/"
         else
-            liquid :login_error, locals: locals
+            liquid :login, locals: locals(error: true)
         end
     end
 

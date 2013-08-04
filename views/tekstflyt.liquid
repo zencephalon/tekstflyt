@@ -15,25 +15,27 @@
 </head>
     <!-- <span id="forkongithub"><a href="https://github.com/zencephalon/tekstflyt">Fork me on GitHub</a></span> -->
 <body>
-    <input type="hidden" value="{{mode}}" id="tekst-mode" name="tekst-mode">
-    <input type="hidden" value="{{wordcount}}" id="tekst-wordcount" name="tekst-wordcount">
-    <input type="hidden" value="{{timer}}" id="tekst-timer" name="tekst-timer">
-    <input type="hidden" value="{{puppies}}" id="tekst-puppies" name="tekst-puppies">
-    <div id="container">
-        <div class="btn btn-large btn-save">Save Flow</div>
-        <div class='flow-save success'>Your flow was successfully saved!</div>
-        <div class="tekstflyt">
-            <textarea class="textarea mousetrap" id="playingfield" placeholder="Start typing here..."></textarea>
+    <div class='non-header-page-tf'>
+        <input type="hidden" value="{{mode}}" id="tekst-mode" name="tekst-mode">
+        <input type="hidden" value="{{wordcount}}" id="tekst-wordcount" name="tekst-wordcount">
+        <input type="hidden" value="{{timer}}" id="tekst-timer" name="tekst-timer">
+        <input type="hidden" value="{{puppies}}" id="tekst-puppies" name="tekst-puppies">
+        <div id="container">
+            <div class="btn btn-large btn-save">Save Flow</div>
+            <div class='flow-save success'>Your flow was successfully saved!</div>
+            <div class="tekstflyt">
+                <textarea class="textarea mousetrap" id="playingfield" placeholder="Start typing here..."></textarea>
+            </div>
+            <div class='encouragement' style='display: none;'></div>
+            <div class="stats">
+                <h2>
+                    Words: <b>0</b> | WPM: <b>0</b>
+                </h2>
+            </div>
+            <span id="scoreboard"><h2>Words: <b>0</b> |
+                    Score: <b>0</b></h2>
+            </span>
         </div>
-        <div class='encouragement' style='display: none;'></div>
-        <div class="stats">
-            <h2>
-                Words: <b>0</b> | WPM: <b>0</b>
-            </h2>
-        </div>
-        <span id="scoreboard"><h2>Words: <b>0</b> |
-                Score: <b>0</b></h2>
-        </span>
     </div>
 </body>
 <script src="/js/dd/caret.js"></script>

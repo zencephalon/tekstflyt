@@ -21,10 +21,22 @@
         <div class='mode'>
             <h1 class='mode'>Timed Mode</h1>
             <div class='mode-instructions'>
-                Enter desired time limit in minutes. ie: 5
+                Select desired time limit.
             </div>
-            <div class='error-timer error'>Please enter a time.</div>
-            <input id="timer" type="text" name="timer" placeholder="5"/>
+            <!-- <div class='error-timer error'>Please enter a time.</div>
+            <input id="timer" type="text" name="timer" placeholder="5"/> -->
+            <select class='timed-mode'>
+              <option value="">1 min</option>
+              <option value="">2 min</option>
+              <option value="">3 min</option>
+              <option value="">4 min</option>
+              <option value="">5 min</option>
+              <option value="">6 min</option>
+              <option value="">7 min</option>
+              <option value="">8 min</option>
+              <option value="">9 min</option>
+              <option value="">10 min</option>
+            </select>
             <label for="puppies">Enable puppies for encouragement?</label>
             <input name="mode" type="hidden" value="timetrial">
             <input class="puppies" type="checkbox" name="puppies">

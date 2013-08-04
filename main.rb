@@ -72,7 +72,11 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}/edit", auth: :writer do
-            liquid :tekstflyt, locals: locals(text: "")
+            local_hash = {}
+            [:mode, :wordcount, :timer, :puppies].each do |sym|
+                local_hash[sym] ||= params[sym]
+            end
+            liquid :tekstflyt, locals: locals(local_hash)
         end
 
         get "#{path}/:num/view", auth: :writer do

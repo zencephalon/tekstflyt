@@ -5,7 +5,7 @@
 	    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.score}} — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 	{% endfor %}
 
-	{% if flows.size < 1 %}
+	{% if wordcount_flows.size < 1 %}
 	<p>No highscores on the board. Get writing!</p>
 	{% endif %}
 	</ul>
@@ -15,7 +15,7 @@
 	    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.score}} — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 	{% endfor %}
 
-	{% if flows.size < 1 %}
+	{% if timer_flows.size < 1 %}
 	<p>No highscores on the board. Get writing!</p>
 	{% endif %}
 	</ul>

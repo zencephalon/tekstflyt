@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
 
     $("form").on("submit", function(event) {
     	var username = $('#username').val();

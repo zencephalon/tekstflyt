@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
 
     $(".form-wordcount").on("submit", function(event) {
     	var wordcount = $('#wordcount').val();

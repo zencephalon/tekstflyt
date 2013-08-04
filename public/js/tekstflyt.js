@@ -97,7 +97,6 @@ updateFlowStatus = function() {
     if (wordcount >= 500) {
         $('.btn-save').css('display', 'block');
         $('.btn-save').on('click', function() {
-            console.log('hello');
             saveFlowToServer();
         });
     }

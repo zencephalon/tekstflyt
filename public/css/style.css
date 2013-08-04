@@ -293,3 +293,22 @@ code {
   font-weight: 300;
   font-size: 80%;
 }
+
+.mode h1 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  line-height: 1.2em;
+  margin: 10px;
+}
+
+.mode-instructions {
+  font-size: 65%;
+}
+
+input.puppies {
+  cursor: pointer;
+}
+
+label[for='puppies'] {
+  font-size: 70%;
+}

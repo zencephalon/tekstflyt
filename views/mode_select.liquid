@@ -1,13 +1,14 @@
 <form action="/flow/edit" method="get">
     <div class="signup-wrapper">
-        <div>
-            <p>
-            Start a word count mode game!
-            </p>
-            <input id="wordcount" type="text" name="wordcount" placeholder="500 words"/>
-            <label for="puppies">Puppies mode?</label>
+        <div class='mode'>
+            <h1 class='mode'>Word Count Mode</h1>
+            <div class='mode-instructions'>
+                Type your desired word count. ie: 500
+            </div>
+            <input id="wordcount" type="text" name="wordcount" placeholder="500"/>
+            <label for="puppies">Enable puppies for encouragement?</label>
             <input name="mode" type="hidden" value="wordcount">
-            <input id="puppies" type="checkbox" name="puppies">
+            <input class="puppies" type="checkbox" name="puppies">
         </div>
         <div class='btn-holder'>
             <input type="submit" class='btn' value="Start!" />
@@ -16,14 +17,15 @@
 </form>
 <form action="/flow/edit" method="get">
     <div class="signup-wrapper">
-        <div>
-            <p>
-            Start a time trial mode game!
-            </p>
-            <input id="timer" type="text" name="timer" placeholder="5 minutes"/>
-            <label for="puppies">Puppies mode?</label>
+        <div class='mode'>
+            <h1 class='mode'>Timed Mode</h1>
+            <div class='mode-instructions'>
+                Type your desired time limit in minutes. ie: 5
+            </div>
+            <input id="timer" type="text" name="timer" placeholder="5"/>
+            <label for="puppies">Enable puppies for encouragement?</label>
             <input name="mode" type="hidden" value="timetrial">
-            <input id="puppies" type="checkbox" name="puppies">
+            <input class="puppies" type="checkbox" name="puppies">
         </div>
         <div class='btn-holder'>
             <input type="submit" class='btn' value="Start!" />

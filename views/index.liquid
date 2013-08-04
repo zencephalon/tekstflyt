@@ -1,11 +1,11 @@
 {% if logged_in %}
 <h2>Welcome {{ writer }}!</h2> </br>
 
-You can <a href="/flow/new">start a new flow</a>.
+<a href="/flow/new"><div class='btn btn-option'>Start a New Flow</div></a>
 
-Or <a href="/flow">view your flows</a>.
+<a href="/flow"><div class='btn btn-option'>View Your Flows</div></a>
 
-You can <a href="/logout">logout</a>.
+<a href="/logout"><div class='btn btn-option'>Logout</div></a>
 {% else %}
     <p>
     Welcome to Tekstflyt, the fastest way to flow your thoughts!

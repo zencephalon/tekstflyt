@@ -70,6 +70,11 @@ input[placeholder] {
   font-weight: 300;
 }
 
+.btn:hover {
+  background-color: #5FD1DA;
+  border-color: #5FD1DA;
+}
+
 .btn-large {
   padding: 10px;
   font-size: 30px;
@@ -354,4 +359,18 @@ label[for='puppies'] {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-option {
+  width: 15%;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  background-color: #5FD1DA;
+  padding: 5px 0px 5px 0px;
+}
+
+.btn-option:hover {
+  background-color: #1EA1C2;
 }

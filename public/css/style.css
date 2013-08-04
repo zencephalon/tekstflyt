@@ -70,10 +70,10 @@ input[placeholder] {
   font-weight: 300;
 }
 
-.btn:hover {
+/*.btn:hover {
   background-color: #5FD1DA;
   border-color: #5FD1DA;
-}
+}*/
 
 .btn-large {
   padding: 10px;

@@ -329,6 +329,11 @@ label[for='puppies'] {
   border-radius: 4px;
 }
 
+.error-signup {
+  padding: 10px;
+  margin: 5px;
+}
+
 .success {
   color: #468847;
   background-color: #dff0d8;

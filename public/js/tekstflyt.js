@@ -176,5 +176,5 @@ function saveFlowToServer() {
     $('.flow-save').css('display', 'block');
     saveFlow();
     var total_text = $('.text-content').text();
-    $.post('/flow', { text: total_text, score: score });
+    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title });
 }

@@ -58,7 +58,7 @@ class Prose < Sinatra::Base
 
     ["/flow", "/f"].each do |path|
         post "#{path}", auth: :writer do
-            $flow_m.create(writer, params[:text], params[:score])
+            $flow_m.create(writer, params[:text], params[:score], params[:title], params[:mode], params[:timer], params[:wordcount])
             redirect '/'
         end
 

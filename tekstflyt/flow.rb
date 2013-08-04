@@ -33,7 +33,7 @@ class FlowManager
         return flow
     end
 
-    def create(writer, text, score, title = nil)
+    def create(writer, text, score, title, mode, timer, wordcount)
         flow = Flow.new
         flow.text = text
         flow.title = title || Time.now.strftime("%D %H:%M")
@@ -41,6 +41,11 @@ class FlowManager
         flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id
         flow.writer_name = writer.name
+        flow.mode = mode
+        flow.timer = timer.to_i
+        flow.wordcount = wordcount.to_i
+        flow.modescore = flow.score.to_f / flow.wordcount if (mode == "wordcount")
+        flow.modescore = flow.score.to_f / flow.timer if (mode == "timer")
 
         mongo_obj = flow.to_mongo
         @flow_db.insert(mongo_obj)

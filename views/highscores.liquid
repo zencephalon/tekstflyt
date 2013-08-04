@@ -1,7 +1,17 @@
 <div class='non-header-page'>
-	<h2>Highscores</h2>
+	<h2>Wordcount Mode Highscores</h2>
 	<ul>
-	{% for flow in flows %}
+	{% for flow in wordcount_flows %}
+	    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.score}} — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
+	{% endfor %}
+
+	{% if flows.size < 1 %}
+	<p>No highscores on the board. Get writing!</p>
+	{% endif %}
+	</ul>
+	<h2>Timer Mode Highscores</h2>
+	<ul>
+	{% for flow in timer_flows %}
 	    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.score}} — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 	{% endfor %}
 

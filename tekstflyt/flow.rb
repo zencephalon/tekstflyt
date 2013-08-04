@@ -62,7 +62,7 @@ class FlowManager
         @flow_db.find({w: writer._id}).to_a.map {|f| mongo_to_ruby(f).to_liquid}
     end
 
-    def get_by_score(n, sort)
-        @flow_db.find({}, {limit: n}).sort(s: sort).to_a.map {|f| mongo_to_ruby(f).to_liquid}
+    def get_by_score(mode, n, sort)
+        @flow_db.find({m: mode}, {limit: n}).sort(ms: sort).to_a.map {|f| mongo_to_ruby(f).to_liquid}
     end
 end

@@ -12,6 +12,7 @@ var game_mode = null;
 var timer_goal = null;
 var wordcount_goal = null;
 var puppies_mode = null;
+var final_game_length = null;
 
 function saveFlow() {
     var text = $('#playingfield').val();
@@ -48,8 +49,10 @@ function checkEndGame() {
 }
 
 function endGame() {
+    final_game_length = getElapsedSeconds(game_start_time);
     // pop up a modal
     // set game end time, compute final stats
+    // model can ask for a title
 }
 
 function displayEncouragement(score) {

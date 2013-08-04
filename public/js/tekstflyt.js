@@ -12,13 +12,12 @@ var game_mode = null;
 var timer_goal = null;
 var wordcount_goal = null;
 var puppies_mode = null;
-var game_ending_after_flow_finishes = false;
 
 function saveFlow() {
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
-    var flow_time = getElapsedSeconds();
+    var flow_time = getElapsedSeconds(sv_time);
 
     freezeFlowAndReset(text);
 
@@ -31,7 +30,26 @@ function saveFlow() {
     updateFlowStatus();
     displayEncouragement(current_score);
 
+    if (checkEndGame()) {
+        endGame();
+    }
+
     flowing = false;
+}
+
+function checkEndGame() {
+    if (game_mode == "wordcount" && wordcount >= wordcount_goal) {
+        return true;
+    } 
+    if (game_mode == "timer" && getElapsedSeconds(game_start_time) >= timer_goal) {
+        return true;
+    }
+    return false;
+}
+
+function endGame() {
+    // pop up a modal
+    // set game end time, compute final stats
 }
 
 function displayEncouragement(score) {
@@ -97,7 +115,7 @@ updateFlowStatus = function() {
     var text = $('#playingfield').val();
     var chars = text.length;
     var words = getWordCount(text);
-    var seconds = getElapsedSeconds();
+    var seconds = getElapsedSeconds(sv_time);
     var wpm = Math.round(words / seconds * 60);
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
 
@@ -113,22 +131,27 @@ updateFlowStatus = function() {
 function startGame() {
     game_mode = $('#tekst-mode').val();
     wordcount_goal = parseInt($('#tekst-wordcount').val());
-    // minutes
-    timer_goal = parseInt($('#tekst-timer').val());
+    // seconds
+    timer_goal = 60 * parseInt($('#tekst-timer').val());
     puppies_mode = $('#tekst-puppies').val();
 
     game_start_time = getTime();
     game_started = true;
 }
 
+function startNewFlow() {
+    sv_time = getTime();
+    hideEncouragement();
+    flowing = true;
+}
+
+
 updateFlowState = function() {
     if (! game_started) {
         startGame();
     }
     if (! flowing) {
-        sv_time = getTime();
-        hideEncouragement();
-        flowing = true;
+        startNewFlow();
     }
     if (saveFlowTimeout) {
         window.clearTimeout(saveFlowTimeout);
@@ -136,15 +159,15 @@ updateFlowState = function() {
     
     updateFlowStatus();
 
-    saveFlowTimeout = window.setTimeout(saveFlow, 1000);
+    saveFlowTimeout = window.setTimeout(saveFlow, 500);
 }
 
 function getTime() {
     return (new Date).getTime();
 }
 
-function getElapsedSeconds() {
-    return (getTime() - sv_time) / 1000;
+function getElapsedSeconds(time) {
+    return (getTime() - time) / 1000;
 }
 
 document.getElementById("playingfield").oninput = updateFlowState;

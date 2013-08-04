@@ -10,7 +10,10 @@
             <input type="reset" class='btn clear' value="Clear" />
             <input type="submit" class='btn' value="Login" />
         </div>
-         <div class='error error-padding error-login'>Looks like some fields were left empty.</div>
+        <div class='error error-padding error-login-empty'>Looks like some fields were left empty.</div>
+        {% if error %}
+            <div class='error error-padding error-login'>Wrong username or password. Try again!</div>
+        {% endif %}
     </div>
 </form>
 

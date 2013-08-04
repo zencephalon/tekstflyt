@@ -334,6 +334,11 @@ label[for='puppies'] {
   margin: 5px;
 }
 
+.error-pw-match {
+  padding: 10px;
+  margin: 5px;
+}
+
 .success {
   color: #468847;
   background-color: #dff0d8;

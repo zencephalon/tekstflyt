@@ -312,3 +312,13 @@ input.puppies {
 label[for='puppies'] {
   font-size: 70%;
 }
+
+.error {
+  display: none;
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border-color: #EED3D7;
+  text-shadow: none;
+  margin: 5px;
+  border-radius: 4px;
+}

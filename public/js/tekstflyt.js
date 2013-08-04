@@ -133,14 +133,19 @@ function startGame() {
     game_started = true;
 }
 
+function startNewFlow() {
+    sv_time = getTime();
+    hideEncouragement();
+    flowing = true;
+}
+
+
 updateFlowState = function() {
     if (! game_started) {
         startGame();
     }
     if (! flowing) {
-        sv_time = getTime();
-        hideEncouragement();
-        flowing = true;
+        startNewFlow();
     }
     if (saveFlowTimeout) {
         window.clearTimeout(saveFlowTimeout);

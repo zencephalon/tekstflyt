@@ -11,7 +11,7 @@ $( document ).ready(function() {
 			$('.error-signup').css('display', 'block');	
 		} 
 
-		if(password !== pw_confirm) {
+		if(password !== pw_confirm && password.length > 0 && pw_confirm.length > 0) {
 			event.preventDefault();
 			$('.error-pw-match').css('display', 'block');
 

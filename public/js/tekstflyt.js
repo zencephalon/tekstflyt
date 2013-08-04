@@ -6,6 +6,13 @@ var score = 0;
 var sv_time = 0;
 var flowing = false;
 
+var game_started = false;
+var game_start_time = null;
+var game_mode = null;
+var timer_goal = null;
+var wordcount_goal = null;
+var puppies_mode = null;
+
 function saveFlow() {
     var text = $('#playingfield').val();
     var chars = text.length;
@@ -102,7 +109,20 @@ updateFlowStatus = function() {
     }
 }
 
+function startGame() {
+    game_mode = $('#tekst-mode').val();
+    wordcount_goal = $('#tekst-wordcount').val();
+    timer_goal = $('#tekst-timer').val();
+    puppies_mode = $('#tekst-puppies').val();
+
+    game_start_time = getTime();
+    game_started = true;
+}
+
 updateFlowState = function() {
+    if (! game_started) {
+        startGame();
+    }
     if (! flowing) {
         sv_time = getTime();
         hideEncouragement();

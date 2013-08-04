@@ -12,6 +12,7 @@ var game_mode = null;
 var timer_goal = null;
 var wordcount_goal = null;
 var puppies_mode = null;
+var game_ending_after_flow_finishes = false;
 
 function saveFlow() {
     var text = $('#playingfield').val();
@@ -111,8 +112,9 @@ updateFlowStatus = function() {
 
 function startGame() {
     game_mode = $('#tekst-mode').val();
-    wordcount_goal = $('#tekst-wordcount').val();
-    timer_goal = $('#tekst-timer').val();
+    wordcount_goal = parseInt($('#tekst-wordcount').val());
+    // minutes
+    timer_goal = parseInt($('#tekst-timer').val());
     puppies_mode = $('#tekst-puppies').val();
 
     game_start_time = getTime();

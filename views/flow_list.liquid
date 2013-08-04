@@ -1,5 +1,4 @@
-<ul>
+<h2>Flows for {{ writer }}</h2>
 {% for flow in flows %}
-    <li><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a></li>
+    <p><a href="/flow/{{flow.number}}/view">{{ flow.title }}</a></p>
 {% endfor %}
-</ul>

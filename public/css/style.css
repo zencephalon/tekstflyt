@@ -349,3 +349,10 @@ label[for='puppies'] {
   display: none;
   margin-bottom: 25px;
 }
+
+#text {
+  text-align: left;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}

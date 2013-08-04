@@ -17,7 +17,7 @@ Flow = Struct.new :_id, :text, :title, :score, :writer, :number, :writer_name, :
 end
 
 class FlowManager
-    RUBY_TO_MONGO = {_id: :_id, text: :tx, writer: :w, title: :tl, score: :s, number: :n, writer_name: :wn, mode: :m, wordcount: :wc, timer: :tm modescore: :ms}.freeze
+    RUBY_TO_MONGO = {_id: :_id, text: :tx, writer: :w, title: :tl, score: :s, number: :n, writer_name: :wn, mode: :m, wordcount: :wc, timer: :tm, modescore: :ms}.freeze
     MONGO_TO_RUBY = RUBY_TO_MONGO.invert.freeze
 
     def initialize(tekstflyt)

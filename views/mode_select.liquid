@@ -1,0 +1,32 @@
+<form action="/flow/edit" method="get">
+    <div class="signup-wrapper">
+        <div>
+            <p>
+            Start a word count mode game!
+            </p>
+            <input id="wordcount" type="text" name="wordcount" placeholder="500 words"/>
+            <label for="puppies">Puppies mode?</label>
+            <input name="mode" type="hidden" value="wordcount">
+            <input id="puppies" type="checkbox" name="puppies">
+        </div>
+        <div class='btn-holder'>
+            <input type="submit" class='btn' value="Start!" />
+        </div>
+    </div>
+</form>
+<form action="/flow/edit" method="get">
+    <div class="signup-wrapper">
+        <div>
+            <p>
+            Start a time trial mode game!
+            </p>
+            <input id="timer" type="text" name="timer" placeholder="5 minutes"/>
+            <label for="puppies">Puppies mode?</label>
+            <input name="mode" type="hidden" value="timetrial">
+            <input id="puppies" type="checkbox" name="puppies">
+        </div>
+        <div class='btn-holder'>
+            <input type="submit" class='btn' value="Start!" />
+        </div>
+    </div>
+</form>

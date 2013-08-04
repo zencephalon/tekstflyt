@@ -153,7 +153,7 @@ updateFlowState = function() {
     
     updateFlowStatus();
 
-    saveFlowTimeout = window.setTimeout(saveFlow, 1000);
+    saveFlowTimeout = window.setTimeout(saveFlow, 500);
 }
 
 function getTime() {

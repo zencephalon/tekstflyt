@@ -49,6 +49,7 @@ function checkEndGame() {
 
 function endGame() {
     // pop up a modal
+    // set game end time, compute final stats
 }
 
 function displayEncouragement(score) {

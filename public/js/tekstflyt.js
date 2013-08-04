@@ -49,7 +49,7 @@ function hideEncouragement() {
 }
 
 function freezeFlowAndReset(text) {
-    $('.tekstflyt').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
+    $('.btn-save').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
     $('#playingfield').val("");
 }
 
@@ -70,6 +70,7 @@ function getScore(text, time) {
     var words = getWordCount(text);
     var wpm = (words / time) * 60;
     var score = Math.round(words*5*wpm/40);
+
     return score;
 }
 
@@ -91,6 +92,15 @@ updateFlowStatus = function() {
     var seconds = getElapsedSeconds();
     var wpm = Math.round(words / seconds * 60);
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
+
+    // change this to user set wordcount or user set timer
+    if (wordcount >= 500) {
+        $('.btn-save').css('display', 'block');
+        $('.btn-save').on('click', function() {
+            console.log('hello');
+            saveFlowToServer();
+        });
+    }
 }
 
 updateFlowState = function() {
@@ -119,6 +129,7 @@ function getElapsedSeconds() {
 document.getElementById("playingfield").oninput = updateFlowState;
 
 function saveFlowToServer() {
+    $('.flow-save').css('display', 'block');
     saveFlow();
     var total_text = $('.text-content').text();
     $.post('/flow', { text: total_text, score: score });

@@ -329,12 +329,7 @@ label[for='puppies'] {
   border-radius: 4px;
 }
 
-.error-signup {
-  padding: 10px;
-  margin: 5px;
-}
-
-.error-pw-match {
+.error-padding {
   padding: 10px;
   margin: 5px;
 }

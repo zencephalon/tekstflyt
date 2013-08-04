@@ -31,7 +31,19 @@ function saveFlow() {
     updateFlowStatus();
     displayEncouragement(current_score);
 
+    if (checkEndGame()) {
+        endGame();
+    }
+
     flowing = false;
+}
+
+function checkEndGame() {
+    return false;
+}
+
+function endGame() {
+
 }
 
 function displayEncouragement(score) {

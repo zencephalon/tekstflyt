@@ -88,7 +88,7 @@ function scoreBoardUpdate(wordcount, score, words, this_score) {
         countdown = "| Words left: <b>" + (wordcount_goal - total_wordcount) + "</b>"
     }
     if (game_mode == "timer") {
-        countdown = "| Time left: <b>" + (timer_goal - getElapsedSeconds(game_start_time)) + "</b>"
+        countdown = "| Secs left: <b>" + (timer_goal - getElapsedSeconds(game_start_time)).toFixed(1) + "</b>"
     }
     $('#scoreboard').html("<h2>Words: <b>" + total_wordcount + "</b> | Score: <b>" + total_score + "</b> " + countdown + "</h2>");
 }
@@ -148,6 +148,7 @@ function startGame() {
 
     game_start_time = getTime();
     game_started = true;
+    window.setInterval(updateFlowStatus, 100);
 }
 
 function startNewFlow() {

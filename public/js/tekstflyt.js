@@ -26,8 +26,6 @@ function saveFlow() {
     current_score = getScore(text, flow_time);
     score += current_score;
 
-    scoreBoardUpdate(wordcount, score);
-
     updateFlowStatus();
     displayEncouragement(current_score);
 
@@ -83,8 +81,16 @@ function freezeFlowAndReset(text) {
     $('#playingfield').val("");
 }
 
-function scoreBoardUpdate(wordcount, score) {
-    $('#scoreboard').html("<h2>Words: <b>" + wordcount + "</b> | Score: <b>" + score + "</b><h2>");
+function scoreBoardUpdate(wordcount, score, words, this_score) {
+    var total_wordcount = wordcount + words;
+    var total_score = score + this_score;
+    if (game_mode == "wordcount") {
+        countdown = "| Words left: <b>" + (wordcount_goal - total_wordcount) + "</b>"
+    }
+    if (game_mode == "timer") {
+        countdown = "| Time left: <b>" + (timer_goal - getElapsedSeconds(game_start_time)) + "</b>"
+    }
+    $('#scoreboard').html("<h2>Words: <b>" + total_wordcount + "</b> | Score: <b>" + total_score + "</b> " + countdown + "</h2>");
 }
 
 function scroll() {
@@ -122,14 +128,15 @@ updateFlowStatus = function() {
     var seconds = getElapsedSeconds(sv_time);
     var wpm = Math.round(words / seconds * 60);
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
+    var this_score = getScore(text, seconds);
 
-    // change this to user set wordcount or user set timer
-    if (wordcount >= 500) {
-        $('.btn-save').css('display', 'block');
-        $('.btn-save').on('click', function() {
-            saveFlowToServer();
-        });
-    }
+    scoreBoardUpdate(wordcount, score, words, this_score);
+    // if (wordcount >= 500) {
+    //     $('.btn-save').css('display', 'block');
+    //     $('.btn-save').on('click', function() {
+    //         saveFlowToServer();
+    //     });
+    // }
 }
 
 function startGame() {

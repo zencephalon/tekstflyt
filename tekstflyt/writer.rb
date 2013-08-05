@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bcrypt'
 
-Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt do
+Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt, :highest_wpm, :longest_flow, :total_words do
     def sanitize!
         self.password_hash = nil
         self.password_salt = nil
@@ -18,7 +18,7 @@ Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt do
 end
 
 class WriterManager
-    RUBY_TO_MONGO = {_id: :_id, name: :n, flow_count: :fc, password_hash: :ph, password_salt: :ps}.freeze
+    RUBY_TO_MONGO = {_id: :_id, name: :n, flow_count: :fc, password_hash: :ph, password_salt: :ps, highest_wpm: :hwpm, longest_flow: :lf, total_words: :tw}.freeze
     MONGO_TO_RUBY = RUBY_TO_MONGO.invert.freeze
 
     def initialize(tekstflyt)
@@ -44,6 +44,9 @@ class WriterManager
         writer.name = name
         writer.password_hash = password_hash
         writer.password_salt = password_salt
+        writer.highest_wpm = 0
+        writer.total_words = 0
+        writer.longest_flow = 0
 
         mongo_obj = writer.to_mongo
         @writer_db.insert(mongo_obj)
@@ -74,6 +77,16 @@ class WriterManager
     def find_by_name(name)
         writer = @writer_db.find_one({n: name})
         return writer ? mongo_to_ruby(writer) : nil
+    end
+
+    def update_stats(writer, highest_wpm, longest_flow, words)
+        highest_wpm, longest_flow, words = highest_wpm.to_i, longest_flow.to_i, words.to_i
+        writer.total_words += words
+        writer.highest_wpm = highest_wpm if highest_wpm > writer.highest_wpm
+        writer.longest_flow = longest_flow if longest_flow > writer.longest_flow
+
+        mongo_obj = writer.to_mongo
+        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$set' => mongo_obj})
     end
 end
 

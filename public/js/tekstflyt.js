@@ -1,11 +1,11 @@
-// saved buffer
-
+// Game state vars
 var saveFlowTimeout = null;
 var wordcount = 0;
 var score = 0;
 var sv_time = 0;
 var flowing = false;
 
+// Game mode vars
 var game_started = false;
 var game_start_time = null;
 var game_mode = null;
@@ -13,6 +13,10 @@ var timer_goal = null;
 var wordcount_goal = null;
 var puppies_mode = null;
 var final_game_length = null;
+
+// Stats collection vars
+var longest_flow = -1;
+var highest_wpm = -1;
 
 function saveFlow() {
     var text = $('#playingfield').val();
@@ -25,6 +29,10 @@ function saveFlow() {
     wordcount += words;
     current_score = getScore(text, flow_time);
     score += current_score;
+
+    if (words > longest_flow) {
+        longest_flow = words;
+    }
 
     updateFlowStatus();
     displayEncouragement(current_score);
@@ -130,6 +138,10 @@ updateFlowStatus = function() {
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
     var this_score = getScore(text, seconds);
 
+    if (wpm > highest_wpm) {
+        highest_wpm = wpm;
+    }
+
     scoreBoardUpdate(wordcount, score, words, this_score);
     // if (wordcount >= 500) {
     //     $('.btn-save').css('display', 'block');
@@ -188,5 +200,5 @@ function saveFlowToServer() {
     $('.flow-save').css('display', 'block');
     saveFlow();
     var total_text = $('.text-content').text();
-    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title });
+    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow, highest_wpm: highest_wpm });
 }

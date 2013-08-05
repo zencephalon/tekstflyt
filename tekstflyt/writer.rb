@@ -15,6 +15,14 @@ Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt, :h
         end
         return mongo_obj
     end
+
+    def to_liquid
+        liquid_obj = {}
+        WriterManager::RUBY_TO_MONGO.each do |key, val|
+            liquid_obj[key.to_s] = self[key] if self[key]
+        end
+        return liquid_obj
+    end
 end
 
 class WriterManager

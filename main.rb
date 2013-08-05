@@ -102,7 +102,7 @@ class Prose < Sinatra::Base
     get "/w/:name" do
         w = $writer_m.find_by_name(params[:name])
         flows = $flow_m.get_all_by_writer(w)
-        liquid :public_flow_list, locals: locals(flows: flows, writer: w.name)
+        liquid :writer, locals: locals(flows: flows, writer: w.to_liquid)
     end
 
     get "/w" do

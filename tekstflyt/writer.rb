@@ -13,6 +13,7 @@ Writer = Struct.new :_id, :name, :flow_count, :password_hash, :password_salt, :h
         WriterManager::RUBY_TO_MONGO.each do |key, val|
             mongo_obj[val] = self[key] if self[key]
         end
+        mongo_obj.delete(:_id)
         return mongo_obj
     end
 
@@ -94,6 +95,9 @@ class WriterManager
         writer.longest_flow = longest_flow if longest_flow > writer.longest_flow
 
         mongo_obj = writer.to_mongo
+        File.open("log","w+") do |f|
+            f.puts mongo_obj
+        end
         @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$set' => mongo_obj})
     end
 end

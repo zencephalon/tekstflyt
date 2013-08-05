@@ -16,7 +16,6 @@ var final_game_length = null;
 
 // Stats collection vars
 var longest_flow = -1;
-var highest_wpm = -1;
 
 function saveFlow() {
     var text = $('#playingfield').val();
@@ -152,10 +151,6 @@ updateFlowStatus = function() {
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
     var this_score = getScore(text, seconds);
 
-    if (wpm > highest_wpm) {
-        highest_wpm = wpm;
-    }
-
     scoreBoardUpdate(wordcount, score, words, this_score);
 }
 
@@ -209,5 +204,5 @@ function saveFlowToServer() {
     saveFlow();
     var total_text = $('.text-content').text();
     var title = $('#title').val();
-    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow, highest_wpm: highest_wpm });
+    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow });
 }

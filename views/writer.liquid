@@ -1,0 +1,13 @@
+<h2>{{ writer }}’s stats</h2>
+<ul>
+    <li>Total words written: <b>{{ writer.total_words }}</b></li>
+    <li>Highest words per minute: <b>{{ writer.highest_wpm }}</b></li>
+    <li>Longest flow: <b>{{ writer.longest_flow }}</b></li>
+</ul>
+
+<h2>{{ writer }}’s flows</h2>
+<ul>
+{% for flow in flows %}
+    <li><a href="/w/{{ writer }}/f/{{ flow.number }}">{{ flow.title }}</a></li>
+{% endfor %}
+</ul>

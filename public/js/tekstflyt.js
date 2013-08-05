@@ -57,9 +57,10 @@ function endGame() {
 
 function displayEncouragement(score) {
     var word;
-    word = "pathetic";
+    word = "poor";
     if (score > 50) { word = "okay"; }
-    if (score > 100) { word = "cool"; }
+    if (score > 75) { word = "fair"; }
+    if (score > 125) { word = "cool"; }
     if (score > 200) { word = "nice"; }
     if (score > 300) { word = "sweet"; }
     if (score > 400) { word = "great"; }

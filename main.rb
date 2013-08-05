@@ -73,6 +73,12 @@ class Prose < Sinatra::Base
 
         get "#{path}/edit", auth: :writer do
             local_hash = {}
+            if params[:wordcount].nil? || params[:wordcount].empty?
+                params[:wordcount] = 500
+            end
+            if params[:timer].nil? || params[:timer].empty?
+                params[:timer] = 5
+            end
             [:mode, :wordcount, :timer, :kittens].each do |sym|
                 local_hash[sym] ||= params[sym]
             end

@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     $(".form-wordcount").on("submit", function(event) {
     	var wordcount = $('#wordcount').val();
-		if (!(isInt(wordcount) && wordcount.length > 0))  {
+		if (!(isInt(wordcount))  {
 			event.preventDefault();
 			$('.error-wordcount').css('display', 'block');
 		} 

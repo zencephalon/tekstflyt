@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 	$(".form-timer").on("submit", function(event) {
 		var timer = $('#timer').val();
-		if (!(isInt(timer) && timer.length > 0)) {
+		if (!(isInt(timer))) {
 			event.preventDefault();
 			$('.error-timer').css('display', 'block');
 		}

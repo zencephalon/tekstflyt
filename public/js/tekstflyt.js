@@ -54,11 +54,25 @@ function checkEndGame() {
     return false;
 }
 
+function disablePlayingField() {
+    $('#playingfield').css('display', 'none').attr('disabled','disabled');
+}
+
+function enableSaveButton() {
+    $('.btn-save').css('display', 'block');
+    $('.btn-save').on('click', function() {
+        saveFlowToServer();
+    });
+}
+
+
 function endGame() {
     final_game_length = getElapsedSeconds(game_start_time);
-    // pop up a modal
-    // set game end time, compute final stats
-    // model can ask for a title
+    hideEncouragement();
+    disablePlayingField();
+    enableSaveButton();
+    $('#game-over').css('display', 'block');
+    $('#title').css('display', 'block');
 }
 
 function displayEncouragement(score) {
@@ -85,7 +99,7 @@ function hideEncouragement() {
 }
 
 function freezeFlowAndReset(text) {
-    $('.btn-save').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
+    $('.tekstflyt').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
     $('#playingfield').val("");
 }
 
@@ -143,12 +157,6 @@ updateFlowStatus = function() {
     }
 
     scoreBoardUpdate(wordcount, score, words, this_score);
-    // if (wordcount >= 500) {
-    //     $('.btn-save').css('display', 'block');
-    //     $('.btn-save').on('click', function() {
-    //         saveFlowToServer();
-    //     });
-    // }
 }
 
 function startGame() {
@@ -200,5 +208,6 @@ function saveFlowToServer() {
     $('.flow-save').css('display', 'block');
     saveFlow();
     var total_text = $('.text-content').text();
+    var title = $('#title').val();
     $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow, highest_wpm: highest_wpm });
 }

@@ -21,11 +21,15 @@
         <input type="hidden" value="{{timer}}" id="tekst-timer" name="tekst-timer">
         <input type="hidden" value="{{kittens}}" id="tekst-kittens" name="tekst-kittens">
         <div id="container">
-            <div class="btn btn-large btn-save">Save Flow</div>
-            <div class='flow-save success'>Your flow was successfully saved!</div>
             <div class="tekstflyt">
                 <textarea class="textarea mousetrap" id="playingfield" placeholder="Start typing here..."></textarea>
             </div>
+
+            <h2 id="game-over" style="display:none">Game over!</h2>
+            <input type="text" name="title" id="title" style="display:none" placeholder="enter title">
+            <div class="btn btn-large btn-save">Save Flow</div>
+            <div class='flow-save success'>Your flow was successfully saved!</div>
+
             <div class='encouragement' style='display: none;'></div>
             <div class="stats">
                 <h2>

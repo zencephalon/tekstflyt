@@ -11,7 +11,7 @@ var game_start_time = null;
 var game_mode = null;
 var timer_goal = null;
 var wordcount_goal = null;
-var puppies_mode = null;
+var kittens_mode = null;
 var final_game_length = null;
 
 function saveFlow() {
@@ -144,7 +144,7 @@ function startGame() {
     wordcount_goal = parseInt($('#tekst-wordcount').val());
     // seconds
     timer_goal = 60 * parseInt($('#tekst-timer').val());
-    puppies_mode = $('#tekst-puppies').val();
+    kittens_mode = $('#tekst-kittens').val();
 
     game_start_time = getTime();
     game_started = true;

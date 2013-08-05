@@ -316,11 +316,11 @@ code {
   font-size: 65%;
 }
 
-input.puppies {
+input.kittens {
   cursor: pointer;
 }
 
-label[for='puppies'] {
+label[for='kittens'] {
   font-size: 70%;
 }
 

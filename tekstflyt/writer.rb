@@ -92,11 +92,7 @@ class WriterManager
         writer.total_words += words
         writer.longest_flow = longest_flow if longest_flow > writer.longest_flow
 
-        mongo_obj = writer.to_mongo
-        File.open("log","w+") do |f|
-            f.puts mongo_obj
-        end
-        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$set' => mongo_obj})
+        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$set' => {lf: writer.longest_flow, tw: writer.total_words}})
     end
 end
 

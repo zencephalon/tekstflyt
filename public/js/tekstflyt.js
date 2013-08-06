@@ -204,5 +204,8 @@ function saveFlowToServer() {
     saveFlow();
     var total_text = $('.text-content').text();
     var title = $('#title').val();
-    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow });
+    $.post('/flow', { text: total_text, score: score, mode: game_mode, timer: final_game_length, wordcount: wordcount, title: title, longest_flow: longest_flow }, function(data) {
+        l = window.location;
+        window.location.replace(l.protocol + "//" + l.host + data);
+    });
 }

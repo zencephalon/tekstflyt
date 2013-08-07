@@ -168,8 +168,9 @@ class Prose < Sinatra::Base
     end
 
     error do
-        liquid '500'
+        liquid :fivehundred, layout: false
     end
+
 end
 
 if __FILE__ == $0

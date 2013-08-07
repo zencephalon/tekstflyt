@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta charset="utf-8">
 
-<title>Tekstflyt</title>
-
-<!-- include jQuery library -->
-<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
-<link rel="stylesheet" href="/css/tf-style.css">
-<link rel="shortcut icon" href="/assets/images/favicon.png?v=2" />
-
-</head>
-    <!-- <span id="forkongithub"><a href="https://github.com/zencephalon/tekstflyt">Fork me on GitHub</a></span> -->
-<body>
     <div class='non-header-page-tf'>
         <input type="hidden" value="{{mode}}" id="tekst-mode" name="tekst-mode">
         <input type="hidden" value="{{wordcount}}" id="tekst-wordcount" name="tekst-wordcount">
@@ -24,22 +9,24 @@
                 <textarea class="textarea mousetrap" id="playingfield" placeholder="Start typing here..."></textarea>
             </div>
 
-            <h2 id="game-over" style="display:none">Game over!</h2>
-            <input type="text" name="title" id="title" class="hidden-title-input" placeholder="enter title">
-            <div class="btn btn-large btn-save">Save Flow</div>
-            <div class='flow-save success'>Your flow was successfully saved!</div>
+            <div class='end-game'>
+                <h2 id="game-over" style="display:none">Game over!</h2>
+                <input type="text" name="title" id="title" class="hidden-title-input" placeholder="enter title">
+                <div class="btn btn-large btn-save">Save Flow</div>
+                <div class='flow-save success'>Your flow was successfully saved!</div>
+            </div>
 
             <div class='encouragement' style='display: none;'></div>
             <div class="stats">
-                <h2>
+                <h2 class='tf'>
                     Words: <b>0</b> | WPM: <b>0</b>
                 </h2>
             </div>
-            <span id="scoreboard"><h2>Words: <b>0</b> |
+            <span id="scoreboard"><h2 class='tf'>Words: <b>0</b> |
                     Score: <b>0</b></h2>
             </span>
         </div>
     </div>
-</body>
+
 <script src="/js/tekstflyt.js"></script>
-</html>
+

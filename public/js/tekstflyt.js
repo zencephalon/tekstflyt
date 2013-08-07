@@ -99,6 +99,7 @@ function endGame() {
     enableSaveButton();
     $('#game-over').addClass('white-stroke');
     $('#game-over').css('display', 'block');
+    $('.end-game').css('display', 'block');
     $('#title').css('display', 'block');
 }
 

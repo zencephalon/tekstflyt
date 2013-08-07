@@ -394,3 +394,93 @@ h3 {
   color: #1EA1C2;
   font-size: 70px;
 }
+
+textarea#playingfield {
+    width: 70%;
+    max-width: 70%;
+    font-size: 1.2em;
+    background-color: #ffffff;
+    height: 14em;
+    border-radius: 5px;
+    font-weight: 300;
+    font-family: 'Open Sans';
+}
+
+.kitten-p {
+  color: #fff;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000; 
+}
+
+.white-stroke {
+  text-shadow:
+  -1px -1px 0 #fff,
+  1px -1px 0 #fff,
+  -1px 1px 0 #fff,
+  1px 1px 0 #fff; 
+}
+
+.hidden-title-input {
+  display: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.encouragement {
+  padding: 10px;
+  font-family: 'typewriter';
+  color: #1ea1c2;
+  font-size: 1.6em;
+}
+
+.text-wrapper {
+    text-align: center;
+}
+
+.tekstflyt {
+    position: relative;
+}
+.stats {
+    line-height: 0px;
+}
+
+.text-content p {
+  line-height: 1;
+}
+
+textarea {
+  padding: 5px;
+}
+
+.non-header-page-tf {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.tf {
+  font-weight: 200;
+  font-size: 2em;
+  line-height: 35%;
+}
+
+.end-game {
+  display: none;
+  padding-bottom: 20px;
+  padding-top: 10px ;
+}
+
+.text-content {
+  padding: 5px;
+}
+
+.text-content p {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1;
+}

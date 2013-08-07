@@ -8,59 +8,10 @@ body {
     margin: 0;
 }
 
-@font-face {
-    font-family: 'Latex'; 
-    src: url('/assets/CMU/cmunrm.ttf'); 
-}
-
-@font-face {
-    font-family: 'typewriter';
-    src: url('/assets/CMU/cmuntb.ttf');
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/assets/OpenSans/OpenSans-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/assets/OpenSans/OpenSans-Light.ttf');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/assets/OpenSans/OpenSans-Semibold.ttf');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/assets/OpenSans/OpenSans-Bold.ttf');
-  font-weight: 700;
-  font-style: normal;
-}
-
 h2 {
   font-weight: 200;
   font-size: 2em;
   line-height: 35%;
-}
-
-textarea#playingfield {
-    width: 70%;
-    max-width: 70%;
-    font-size: 1.2em;
-    background-color: #ffffff;
-    height: 14em;
-    border-radius: 5px;
-    font-weight: 300;
-    font-family: 'Open Sans';
 }
 
 p {
@@ -87,24 +38,6 @@ a {
 
 a:hover {
     color: #68d0dc;
-}
-
-.encouragement {
-    margin-bottom: 20px;
-    font-family: 'typewriter';
-    color: #1ea1c2;
-    font-size: 1.6em;
-}
-
-.text-wrapper {
-    text-align: center;
-}
-
-.tekstflyt {
-    position: relative;
-}
-.stats {
-    line-height: 0px;
 }
 
 #stars {
@@ -147,27 +80,4 @@ a:hover {
 .non-header-page-tf {
   margin-top: 8%;
   margin-bottom: 8%;
-}
-
-.kitten-p {
-  color: #fff;
-  text-shadow:
-  -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000; 
-}
-
-.white-stroke {
-  text-shadow:
-  -1px -1px 0 #fff,
-  1px -1px 0 #fff,
-  -1px 1px 0 #fff,
-  1px 1px 0 #fff; 
-}
-
-.hidden-title-input {
-    display: none;
-    margin-right: auto;
-    margin-left: auto;
 }

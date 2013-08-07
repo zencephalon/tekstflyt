@@ -164,11 +164,11 @@ class Prose < Sinatra::Base
     end
 
     not_found do
-        liquid :404
+        liquid '404'
     end
 
     error do
-        liquid :500
+        liquid '500'
     end
 end
 

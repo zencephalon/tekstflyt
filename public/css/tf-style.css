@@ -165,3 +165,9 @@ a:hover {
   -1px 1px 0 #fff,
   1px 1px 0 #fff; 
 }
+
+.hidden-title-input {
+    display: none;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -385,12 +385,6 @@ label[for='kittens'] {
   background-color: #1EA1C2;
 }
 
-.hidden-title-input {
-    display: none;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .timed-mode {
   font-family: "Open Sans";
 }

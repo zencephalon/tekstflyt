@@ -76,7 +76,7 @@ class Prose < Sinatra::Base
             local_hash = {}
 
             if (! %w(wordcount timer).include?(params[:mode]))
-                redirect "/#{path}/new"
+                redirect "#{path}/new"
             end
 
             params[:wordcount] = 500 if params[:wordcount].to_i <= 0

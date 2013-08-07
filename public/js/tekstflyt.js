@@ -21,7 +21,6 @@ var longest_flow = -1;
 
 function saveFlow() {
     var text = $('#playingfield').val();
-    var chars = text.length;
     var words = getWordCount(text);
     var flow_time = getElapsedSeconds(sv_time);
 
@@ -163,7 +162,6 @@ function scroll() {
 // scores should be higher the longer the time is
 // scores should be higher the higher the ratio of text to time is
 function getScore(text, time) {
-    var chars = text.length;
     var words = getWordCount(text);
     var wpm = (words / time) * 60;
     var score = Math.round(words*5*wpm/40);
@@ -184,7 +182,6 @@ function getWordCount(text) {
 
 updateFlowStatus = function() {
     var text = $('#playingfield').val();
-    var chars = text.length;
     var words = getWordCount(text);
     var seconds = getElapsedSeconds(sv_time);
     var wpm = Math.round(words / seconds * 60);

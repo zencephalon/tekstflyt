@@ -18,49 +18,39 @@ class Prose < Sinatra::Base
 
     helpers do
         def logged_in?
-            if session[:writer].nil?
-                return false
-            else
-                return true
-            end
+            !session[:writer].nil?
         end
 
         def writer
-            return session[:writer]
+            session[:writer]
         end
 
         def locals(hash = {})
             hash[:writer] = writer ? writer.name : nil
             hash[:logged_in] = logged_in?
-            return hash
+            hash
         end
     end
 
     set(:auth) do |roles|
       condition do
-        unless logged_in?
-          redirect "/", 303
-        end
+          redirect "/", 303 unless logged_in?
       end
     end
 
-    # =============================================================================
+    # =========================================================================
 
     get "/" do
         liquid :index, locals: locals(title: "Welcome!")
     end
 
-    # ====================== Drafts ===============================================
-
-    get "/tekstflyt" do
-        liquid :tekstflyt
-    end
+    # ====================== Flows ============================================
 
     ["/flow", "/f"].each do |path|
         post "#{path}", auth: :writer do
             flow = $flow_m.create(writer, params[:text], params[:score], params[:title], params[:mode], params[:timer], params[:wordcount])
             $writer_m.update_stats(writer, params[:longest_flow], params[:wordcount])
-            "/flow/#{flow.number}/view"
+            "#{path}/#{flow.number}/view"
         end
 
         get "#{path}", auth: :writer do

@@ -90,6 +90,9 @@ class Prose < Sinatra::Base
 
         get "#{path}/:num/view", auth: :writer do
             flow = $flow_m.get(writer, params[:num])
+
+            redirect "#{path}" if flow.nil?
+
             liquid :flow_display, locals: locals(title: flow.title, text: flow.text, score: flow.score)
         end
     end
@@ -97,6 +100,8 @@ class Prose < Sinatra::Base
     get "/w/:name/f/:num" do
         writer = $writer_m.find_by_name(params[:name])
         flow = $flow_m.get(writer, params[:num])
+
+        redirect "/w/#{params[:name]}" if flow.nil?
 
         liquid :flow_display, locals: locals(title: flow.title, text: flow.text, score: flow.score)
     end
@@ -156,6 +161,14 @@ class Prose < Sinatra::Base
     get "/logout" do
         session[:writer] = nil
         redirect "/"
+    end
+
+    not_found do
+        liquid :404
+    end
+
+    error do
+        liquid :500
     end
 end
 

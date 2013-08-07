@@ -110,6 +110,7 @@ function displayKitten() {
     $('.stats').addClass('white-stroke');
     $('#scoreboard').addClass('white-stroke');
     $('footer').addClass('white-stroke');
+    $('#game-over').addClass('white-stroke');
     $('body').css('background', 'url("' + caturl + '")');
 }
 

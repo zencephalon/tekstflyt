@@ -76,7 +76,8 @@ class WriterManager
 
     # Increment flow count and return the new flow count
     def inc_flow_count(writer)
-        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$inc' => {fc: 1}}, fields: {fc: true}, new: true)['fc']
+        ret = @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$inc' => {fc: 1}}, fields: {fc: true}, new: true)
+        ret.nil? ? 1 : ret['fc']
     end
 
     def find_all

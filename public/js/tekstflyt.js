@@ -135,6 +135,11 @@ function hideEncouragement() {
 function freezeFlowAndReset(text) {
     $('.tekstflyt').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
     $('#playingfield').val("");
+    $('html, body').animate({ 
+        scrollTop: $(document).height()-$(window).height()}, 
+        1400, 
+        "linear"
+        );
 }
 
 function scoreBoardUpdate(wordcount, score, words, this_score) {

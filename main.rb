@@ -164,7 +164,7 @@ class Prose < Sinatra::Base
     end
 
     not_found do
-        liquid '404'
+        liquid :fourohfour, layout: false
     end
 
     error do

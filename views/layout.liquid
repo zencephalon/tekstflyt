@@ -13,7 +13,7 @@
         <div class='navbar-container'>
             <ul class="navbar-nav">
                 {% if logged_in %}
-                    <li class='nav-item'>Hello {{ writer }}!</li>
+                    <li class='nav-item'>Hello <a href='/w/{{writer}}'>{{writer}}</a>!</li>
                     <li class='nav-item'><a href='/flow/new'>New Flow</a></li>
                     <li class='nav-item'><a href='/flow'>View Flows</a></li>
                     <li class='nav-item'><a href='/highscores'>View Highscores</a></li>

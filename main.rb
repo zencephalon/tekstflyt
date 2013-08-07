@@ -75,8 +75,12 @@ class Prose < Sinatra::Base
         get "#{path}/edit", auth: :writer do
             local_hash = {}
 
-            params[:wordcount] = 500 if params[:wordcount].to_s == ''
-            params[:timer] = 5 if params[:timer].to_s == ''
+            if (! %w(wordcount timer).include?(params[:mode]))
+                redirect "/#{path}/new"
+            end
+
+            params[:wordcount] = 500 if params[:wordcount].to_i <= 0
+            params[:timer] = 5 if params[:timer].to_i <= 0
 
             [:mode, :wordcount, :timer, :kittens].each do |sym|
                 local_hash[sym] ||= params[sym]

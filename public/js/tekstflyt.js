@@ -76,6 +76,7 @@ function endGame() {
     hideEncouragement();
     disablePlayingField();
     enableSaveButton();
+    $('#game-over').addClass('white-stroke');
     $('#game-over').css('display', 'block');
     $('#title').css('display', 'block');
 }
@@ -110,7 +111,6 @@ function displayKitten() {
     $('.stats').addClass('white-stroke');
     $('#scoreboard').addClass('white-stroke');
     $('footer').addClass('white-stroke');
-    $('#game-over').addClass('white-stroke');
     $('body').css('background', 'url("' + caturl + '")');
 }
 

@@ -389,8 +389,8 @@ label[for='kittens'] {
   font-family: "Open Sans";
 }
 
-.writer {
+h3 {
   font-weight: 100;
   color: #1EA1C2;
-  font-size: 80px;
+  font-size: 70px;
 }

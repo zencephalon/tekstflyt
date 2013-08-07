@@ -79,7 +79,7 @@ class WriterManager
     end
 
     def find_all
-        return @writer_db.find().to_a
+        return @writer_db.find().to_a.map {|w| mongo_to_ruby(w).to_liquid }
     end
 
     def find_by_name(name)

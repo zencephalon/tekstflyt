@@ -105,6 +105,9 @@ class Prose < Sinatra::Base
 
     get "/w/:name" do
         w = $writer_m.find_by_name(params[:name])
+
+        redirect "/w" if w.nil?
+
         flows = $flow_m.get_all_by_writer(w)
         liquid :writer, locals: locals(flows: flows, cwriter: w.to_liquid)
     end

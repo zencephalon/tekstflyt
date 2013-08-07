@@ -44,8 +44,8 @@ class FlowManager
         flow.mode = mode
         flow.timer = timer.to_i
         flow.wordcount = wordcount.to_i
-        flow.modescore = flow.score.to_f / flow.wordcount if (mode == "wordcount")
-        flow.modescore = flow.score.to_f / flow.timer if (mode == "timer")
+        flow.modescore = (flow.score.to_f / flow.wordcount).round(1) if (mode == "wordcount")
+        flow.modescore = (flow.score.to_f / flow.timer).round(1) if (mode == "timer")
 
         mongo_obj = flow.to_mongo
         @flow_db.insert(mongo_obj)

@@ -115,8 +115,8 @@ class Prose < Sinatra::Base
     end
 
     get "/highscores" do
-        timer_flows = $flow_m.get_by_score('timer', 20, :asc)
-        wordcount_flows = $flow_m.get_by_score('wordcount', 20, :asc)
+        timer_flows = $flow_m.get_by_score('timer', 20, :desc)
+        wordcount_flows = $flow_m.get_by_score('wordcount', 20, :desc)
         liquid :highscores, locals: locals(timer_flows: timer_flows, wordcount_flows: wordcount_flows)
     end
 

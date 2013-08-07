@@ -13,6 +13,8 @@ var timer_goal = null;
 var wordcount_goal = null;
 var kittens_mode = null;
 var final_game_length = null;
+var kitten_gifs = null;
+var kitten_count = 0;
 
 // Stats collection vars
 var longest_flow = -1;
@@ -35,6 +37,10 @@ function saveFlow() {
 
     updateFlowStatus();
     displayEncouragement(current_score);
+
+    if(kittens_mode){
+        displayKitten();
+    }
 
     if (checkEndGame()) {
         endGame();
@@ -91,6 +97,34 @@ function displayEncouragement(score) {
     if (score > 2200) { word = "extraordinary"; }
     $('.encouragement').html("<h2>" + word + " flow!</h2>");
     $('.encouragement').css("display", "block");
+}
+
+function displayKitten() {
+    var caturl = kitten_gifs[kitten_count]['images']['fixed_height'].url;
+    if (kitten_count < kitten_gifs.length){
+        kitten_count++;
+    }
+
+    $('p').addClass('kitten-p');
+    $('.encouragement').addClass('white-stroke');
+    $('.stats').addClass('white-stroke');
+    $('#scoreboard').addClass('white-stroke');
+    $('footer').addClass('white-stroke');
+    $('body').css('background', 'url("' + caturl + '")');
+}
+
+function hideKitten() {
+    $('body').css('background', 'url("/assets/images/debut_light.png")');
+
+}
+
+// currently only pulls 50 gifs.
+function callGiphy() {
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=kittens&api_key=dc6zaTOxFJmzC&limit=50");
+    xhr.done(function(data) { 
+        console.log("success got data", data.data); 
+        kitten_gifs = data.data;
+    });
 }
 
 function hideEncouragement() {
@@ -161,6 +195,10 @@ function startGame() {
     timer_goal = 60 * parseInt($('#tekst-timer').val());
     kittens_mode = $('#tekst-kittens').val();
 
+    // call Giphy at the start of the round
+    if (kittens_mode) {
+        callGiphy();
+    }
     game_start_time = getTime();
     game_started = true;
     window.setInterval(updateFlowStatus, 100);

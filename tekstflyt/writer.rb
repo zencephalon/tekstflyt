@@ -55,6 +55,7 @@ class WriterManager
         writer.password_salt = password_salt
         writer.total_words = 0
         writer.longest_flow = 0
+        writer.flow_count = 0
 
         mongo_obj = writer.to_mongo
         @writer_db.insert(mongo_obj)

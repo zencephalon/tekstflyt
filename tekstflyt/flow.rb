@@ -36,7 +36,7 @@ class FlowManager
     def create(writer, text, score, title, mode, timer, wordcount)
         flow = Flow.new
         flow.text = text
-        flow.title = title.to_s.empty? Time.now.strftime("%D %H:%M") : title
+        flow.title = title.to_s.empty? ? Time.now.strftime("%D %H:%M") : title
         flow.score = score.to_i
         flow.number = @tekstflyt.writer_m.inc_flow_count(writer)
         flow.writer = writer._id

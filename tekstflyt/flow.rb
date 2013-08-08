@@ -47,6 +47,9 @@ class FlowManager
         flow.modescore = (flow.score.to_f / flow.wordcount).round(1) if (mode == "wordcount")
         flow.modescore = (flow.score.to_f / flow.timer).round(1) if (mode == "timer")
 
+        @tekstflyt.increment_flow_count
+        @tekstflyt.increment_word_count(flow.wordcount)
+
         mongo_obj = flow.to_mongo
         @flow_db.insert(mongo_obj)
 

@@ -13,7 +13,7 @@ end
 
 task :setup do |t|
     db = mongo_client.db('tekstflyt')
-    db.collection('tekstflyt').insert({name: 'data', users: 0, flows: 0})
+    db.collection('tekstflyt').insert({name: 'data', users: 0, flows: 0, words: 0})
     writer_m.create("zen", "zen")
 end
 

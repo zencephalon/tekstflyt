@@ -41,7 +41,8 @@ class Prose < Sinatra::Base
     # =========================================================================
 
     get "/" do
-        liquid :index, locals: locals(title: "Welcome!")
+        stats = $tekstflyt.stats
+        liquid :index, locals: locals(title: "Welcome!", stats: stats)
     end
 
     # ====================== Flows ============================================

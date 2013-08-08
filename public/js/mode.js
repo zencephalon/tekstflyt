@@ -18,5 +18,5 @@ $( document ).ready(function() {
 });
 
 function isInt(n) {
-   return n % 1 === 0 && n > 0;
+   return n % 1 === 0 && n >= 0;
 }

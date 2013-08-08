@@ -181,11 +181,9 @@ function enableSaveButton() {
 }
 
 function scroll() {
-    $('html, body').animate({ 
-        scrollTop: $(document).height()-$(window).height()}, 
-        1400, 
-        "linear"
-        );
+    $('html,body').animate({
+        scrollTop: $(".tekstflyt").offset().top - $('.navbar').height()},
+        'slow');
 }
 
 // ============================== Helpers =====================================

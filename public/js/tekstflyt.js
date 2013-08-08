@@ -67,13 +67,14 @@ function saveFlow() {
     freezeFlowAndReset(text);
 
     wordcount += words;
-    current_score = getScore(text, flow_time);
+    current_score = getScore(text, flow_time)[1];
     score += current_score;
 
     if (words > longest_flow) { longest_flow = words; }
 
     updateFlowStatus();
-    displayEncouragement(current_score);
+    //displayEncouragement(current_score);
+    hideEncouragement();
 
     if(kittens_mode) { displayKitten(); }
     if (checkEndGame()) { endGame(); }
@@ -124,22 +125,13 @@ function freezeFlowAndReset(text) {
 }
 
 function displayEncouragement(score) {
-    var word;
-    word = "poor";
-    if (score > 50) { word = "okay"; }
-    if (score > 75) { word = "fair"; }
-    if (score > 125) { word = "cool"; }
-    if (score > 200) { word = "nice"; }
-    if (score > 300) { word = "sweet"; }
-    if (score > 400) { word = "great"; }
-    if (score > 600) { word = "awesome"; }
-    if (score > 800) { word = "amazing"; }
-    if (score > 1000) { word = "incredible"; }
-    if (score > 1400) { word = "spectacular"; }
-    if (score > 1800) { word = "unbelievable"; }
-    if (score > 2200) { word = "extraordinary"; }
-    $('.encouragement').html("<h2>" + word + " flow!</h2>");
-    $('.encouragement').css("display", "block");
+    if (flowing) {
+        var ret_val = getEncouragementLevel(score);
+        var word = ret_val[0];
+        var bonus = ret_val[1];
+        $('.encouragement').html("<h2>" + word + " flow! (+ " + bonus + " pts)</h2>");
+        $('.encouragement').css("display", "block");
+    }
 }
 
 function hideEncouragement() {
@@ -153,11 +145,12 @@ updateFlowStatus = function() {
     var wpm = Math.round(words / seconds * 60);
     $('.stats').html('<h2>Words: <b>' + words + '</b> (+' + words*5 + ' pts) | WPM: <b>' + wpm + '</b> (x' + (wpm / 40).toFixed(1) + ' bonus)</p></h2>');
     var this_score = getScore(text, seconds);
+    displayEncouragement(this_score[0]);
 
-    scoreBoardUpdate(wordcount, score, words, this_score);
+    scoreBoardUpdate(wordcount, words, this_score[1]);
 }
 
-function scoreBoardUpdate(wordcount, score, words, this_score) {
+function scoreBoardUpdate(wordcount, words, this_score) {
     var total_wordcount = wordcount + words;
     var total_score = score + this_score;
     if (game_mode == "wordcount") {
@@ -187,6 +180,25 @@ function scroll() {
 }
 
 // ============================== Helpers =====================================
+
+function getEncouragementLevel(score) {
+    var word = "poor";
+    var bonus = 0;
+    if (score > 50) { word = "okay"; bonus = 25; }
+    if (score > 100) { word = "fair"; bonus = 50; }
+    if (score > 200) { word = "cool"; bonus = 100; }
+    if (score > 400) { word = "nice"; bonus = 150; }
+    if (score > 600) { word = "sweet"; bonus = 200; }
+    if (score > 900) { word = "great"; bonus = 300; }
+    if (score > 1500) { word = "awesome"; bonus = 400; }
+    if (score > 2000) { word = "amazing"; bonus = 500; }
+    if (score > 2700) { word = "incredible"; bonus = 600; }
+    if (score > 3500) { word = "spectacular"; bonus = 800; }
+    if (score > 4500) { word = "unbelievable"; bonus = 1000; }
+    if (score > 6000) { word = "extraordinary"; bonus = 1200; }
+    return [word, bonus];
+}
+
 function getTime() {
     return (new Date).getTime();
 }
@@ -205,7 +217,9 @@ function getScore(text, time) {
     var wpm = (words / time) * 60;
     var score = Math.round(words*5*wpm/40);
 
-    return score;
+    ret_val = getEncouragementLevel(score);
+
+    return [score, score + ret_val[1]];
 }
 
 function getWordCount(text) {

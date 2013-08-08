@@ -120,11 +120,7 @@ function saveFlowToServer() {
 function freezeFlowAndReset(text) {
     $('.tekstflyt').before("<div class='text-content'><p>" + text + "\n" + "</p></div>");
     $('#playingfield').val("");
-    $('html, body').animate({ 
-        scrollTop: $(document).height()-$(window).height()}, 
-        1400, 
-        "linear"
-        );
+    scroll();
 }
 
 function displayEncouragement(score) {
@@ -184,6 +180,14 @@ function enableSaveButton() {
     });
 }
 
+function scroll() {
+    $('html, body').animate({ 
+        scrollTop: $(document).height()-$(window).height()}, 
+        1400, 
+        "linear"
+        );
+}
+
 // ============================== Helpers =====================================
 function getTime() {
     return (new Date).getTime();
@@ -194,10 +198,6 @@ function getElapsedSeconds(time) {
 }
 
 document.getElementById("playingfield").oninput = updateFlowState;
-
-function scroll() {
-    $("html, body").animate({ scrollTop: $('#playingfield').offset().top }, "slow");
-}
 
 // scores should be higher the longer the text is
 // scores should be higher the longer the time is

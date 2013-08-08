@@ -62,16 +62,14 @@ class WriterManager
         @writer_db.insert(mongo_obj)
         @tekstflyt.increment_user_count!
 
+        writer = find_by_name(name)
+
         return writer.sanitize!
     end
 
     def login(name, password)
         writer = find_by_name(name)
         return nil if writer.nil?
-        File.open("log", "w") do |f|
-            f.puts writer.password_hash
-            f.puts BCrypt::Engine.hash_secret(password, writer.password_salt)
-        end
         (writer && writer.password_hash == BCrypt::Engine.hash_secret(password, writer.password_salt)) ? writer.sanitize! : nil
     end
 

@@ -388,3 +388,9 @@ label[for='kittens'] {
 .timed-mode {
   font-family: "Open Sans";
 }
+
+.writer {
+  font-weight: 100;
+  color: #1EA1C2;
+  font-size: 80px;
+}

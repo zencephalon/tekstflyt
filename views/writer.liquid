@@ -1,11 +1,11 @@
 <div class='non-header-page'>
-<h2>{{ cwriter.name }}’s stats</h2>
+<h2 class='writer'>{{ cwriter.name }}’s Stats</h2>
 <ul>
     <li>Total words written: <b>{{ cwriter.total_words }}</b></li>
     <li>Longest flow: <b>{{ cwriter.longest_flow }}</b></li>
 </ul>
 
-<h2>{{ cwriter.name }}’s flows</h2>
+<h2 class='writer'>{{ cwriter.name }}’s Flows</h2>
 <ul>
 {% for flow in flows %}
     <li><a href="/w/{{ cwriter.name }}/f/{{ flow.number }}">{{ flow.title }}</a></li>

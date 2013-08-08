@@ -76,8 +76,8 @@ class WriterManager
 
     # Increment flow count and return the new flow count
     def inc_flow_count(writer)
-        ret = @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$inc' => {fc: 1}}, fields: {fc: true}, new: true)
-        ret.nil? ? 1 : ret['fc']
+        ret = @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$inc' => {fc: 1}}, new: true)
+        ret.nil? ? -1 : ret['fc']
     end
 
     def find_all
@@ -94,7 +94,7 @@ class WriterManager
         writer.total_words += words
         writer.longest_flow = longest_flow if longest_flow > writer.longest_flow
 
-        @writer_db.find_and_modify(query: {_id: writer._id}, update: {'$set' => {lf: writer.longest_flow, tw: writer.total_words}})
+        @writer_db.update(query: {_id: writer._id}, update: {'$set' => {lf: writer.longest_flow, tw: writer.total_words}})
     end
 end
 

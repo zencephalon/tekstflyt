@@ -2,7 +2,7 @@
 	<h2>Wordcount Mode Highscores</h2>
 	<ul>
 	{% for flow in wordcount_flows %}
-	    <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.modescore}} points per word — {{flow.score}} total points — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
+            <li><a href="/w/{{flow.writer_name}}/f/{{flow.number}}">{{flow.title}}</a> — {{flow.modescore}} points per word — {{flow.score}} total points — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 	{% endfor %}
 
 	{% if wordcount_flows.size < 1 %}
@@ -12,7 +12,7 @@
 	<h2>Timer Mode Highscores</h2>
 	<ul>
 	{% for flow in timer_flows %}
-            <li><a href="/flow/{{flow.number}}/view">{{flow.title}}</a> — {{flow.modescore}} points per second — {{flow.score}} total score — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
+            <li><a href="/w/{{flow.writer_name}}/f/{{flow.number}}">{{flow.title}}</a> — {{flow.modescore}} points per second — {{flow.score}} total score — <a href="/w/{{flow.writer_name}}">{{flow.writer_name}}</a></li>
 	{% endfor %}
 
 	{% if timer_flows.size < 1 %}

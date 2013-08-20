@@ -55,8 +55,7 @@ class Prose < Sinatra::Base
         end
 
         get "#{path}", auth: :writer do
-            flows = $flow_m.get_all_by_writer(writer)
-            liquid :flow_list, locals: locals(flows: flows)
+            redirect "/w/#{writer.name}"
         end
 
         get "#{path}/new", auth: :writer do

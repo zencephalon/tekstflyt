@@ -58,7 +58,7 @@ class Prose < Sinatra::Base
             redirect "/w/#{writer.name}"
         end
 
-        get "#{path}/new", auth: :writer do
+        get "#{path}/new" do
             liquid :mode_select, locals: locals()
         end
 
